@@ -3,104 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Science Quiz Home</title>
+<title>Science Quiz</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-        text-align: center;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    text-align: center;
+}
 
-    h1 {
-        padding: 20px;
-        background-color: #222;
-        color: white;
-        margin: 0;
-    }
+h1 {
+    padding: 20px;
+    background-color: #222;
+    color: white;
+    margin: 0;
+}
 
-    .section {
-        margin: 30px auto;
-        width: 80%;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
 
-    .physics-box {
-        background-color: orange;
-        padding: 20px;
-        border-radius: 8px;
-        color: white;
-    }
+.card {
+    width: 220px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 20px;
+    font-weight: bold;
+}
 
-    .subtopics {
-        margin-top: 15px;
-    }
+.card:hover {
+    transform: scale(1.05);
+}
 
-    .subtopics div {
-        padding: 8px;
-        margin: 5px;
-        background-color: #eee;
-        border-radius: 5px;
-    }
+.physics { background-color: orange; color: white; }
+.chemistry { background-color: #4CAF50; color: white; }
+.biology { background-color: #2196F3; color: white; }
 
-    .test-section {
-        background-color: #ddd;
-    }
+.topics {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    margin-top: 10px;
+}
+
+.topics div {
+    background-color: white;
+    padding: 10px;
+    margin: 5px auto;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.show {
+    max-height: 500px;
+}
 </style>
 </head>
 
 <body>
 
-<h1>Science Quiz Home Page</h1>
+<h1>Science Quiz</h1>
 
-<!-- Physics Section -->
-<div class="section">
-    <h2>Physics</h2>
-    <div class="physics-box">
-        <div class="subtopics">
-            <div>Electromagnetism</div>
+<div class="container">
+
+    <!-- Physics -->
+    <div>
+        <div class="card physics" onclick="toggle('physicsTopics')">
+            Physics
+        </div>
+        <div class="topics" id="physicsTopics">
             <div>Mechanics 1</div>
-            <div>Thermal Physics</div>
-            <div>Modern Physics</div>
+            <div>Mechanics 2</div>
             <div>Waves</div>
             <div>Optics</div>
+            <div>Modern Physics</div>
+            <div>Electromagnetism</div>
         </div>
     </div>
+
+    <!-- Chemistry -->
+    <div>
+        <div class="card chemistry" onclick="toggle('chemistryTopics')">
+            Chemistry
+        </div>
+        <div class="topics" id="chemistryTopics">
+            <div>Physical</div>
+            <div>Organic</div>
+            <div>Inorganic</div>
+        </div>
+    </div>
+
+    <!-- Biology -->
+    <div>
+        <div class="card biology" onclick="toggle('biologyTopics')">
+            Biology
+        </div>
+        <div class="topics" id="biologyTopics">
+            <div>Botany</div>
+            <div>Zoology</div>
+        </div>
+    </div>
+
 </div>
 
-<!-- Chemistry Section -->
-<div class="section">
-    <h2>Chemistry</h2>
-    <div class="subtopics">
-        <div>Physical</div>
-        <div>Inorganic</div>
-        <div>Organic</div>
-    </div>
-</div>
-
-<!-- Biology Section -->
-<div class="section">
-    <h2>Biology</h2>
-    <div class="subtopics">
-        <div>Botany</div>
-        <div>Zoology</div>
-    </div>
-</div>
-
-<!-- Make a Test Section -->
-<div class="section test-section">
-    <h2>Make a Test</h2>
-    <div class="subtopics">
-        <div>Physics</div>
-        <div>Chemistry</div>
-        <div>Biology</div>
-    </div>
-</div>
+<script>
+function toggle(id) {
+    const element = document.getElementById(id);
+    element.classList.toggle("show");
+}
+</script>
 
 </body>
 </html>
+
+
