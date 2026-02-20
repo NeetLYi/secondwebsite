@@ -152,7 +152,33 @@
         .review-btn.skipped-q { background: #292112; border-color: #f59e0b; color: #fbbf24; }
         .review-btn.current-q { border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96,165,250,0.4); }
         .review-btn.reviewing { background: #2d1b4e; border-color: #a855f7; color: #d8b4fe; }
-        .hidden { display: none; }
+        .subject-heading { display: flex; align-items: center; gap: 0.8rem; font-size: 1.8rem; font-weight: 700; color: #4ade80; margin: 1rem 0 1.2rem 0; padding-bottom: 0.6rem; border-bottom: 3px solid #22c55e; }
+        .subject-heading.subject-chemistry { color: #60a5fa; border-bottom-color: #3b82f6; margin-top: 2.5rem; }
+        .subject-icon { font-size: 1.8rem; }
+        .topic-card.topic-coming-soon { border-color: #374151; background: #151824; opacity: 0.6; cursor: default; }
+        .topic-card.topic-coming-soon h3 { color: #94a3b8; }
+        .topic-card.topic-coming-soon p { color: #64748b; }
+        .topic-card.topic-coming-soon:hover { transform: none; box-shadow: none; }
+        .hidden { display: none !important; }
+        .review-filter-btn { padding: 0.6rem 1.4rem; border-radius: 8px; border: 2px solid #2d3348; background: #1e2130; color: #94a3b8; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Poppins', sans-serif; }
+        .review-filter-btn:hover { border-color: #60a5fa; color: #f1f5f9; }
+        .review-filter-btn.active { background: #1e3a5f; border-color: #3b82f6; color: #60a5fa; }
+        .review-q-card { background: #1e2130; border-radius: 14px; padding: 1.8rem; margin-bottom: 1.2rem; border: 2px solid #2d3348; }
+        .review-q-card.review-correct { border-color: #22c55e; }
+        .review-q-card.review-incorrect { border-color: #ef4444; }
+        .review-q-card.review-unanswered { border-color: #f59e0b; }
+        .review-q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .review-q-num { font-size: 0.9rem; font-weight: 600; color: #94a3b8; }
+        .review-q-badge { font-size: 0.8rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 999px; }
+        .badge-correct { background: #14532d; color: #4ade80; }
+        .badge-incorrect { background: #7f1d1d; color: #fca5a5; }
+        .badge-unanswered { background: #292112; color: #fbbf24; }
+        .review-q-text { font-size: 1.05rem; color: #f1f5f9; font-weight: 500; line-height: 1.7; margin-bottom: 1.2rem; white-space: pre-line; }
+        .review-options { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.2rem; }
+        .review-option { padding: 0.8rem 1.2rem; border-radius: 8px; font-size: 0.95rem; border: 2px solid #2d3348; background: #151824; color: #cbd5e1; }
+        .review-option.review-opt-correct { background: #14532d; border-color: #22c55e; color: #4ade80; font-weight: 600; }
+        .review-option.review-opt-selected-wrong { background: #7f1d1d; border-color: #ef4444; color: #fca5a5; }
+        .review-explanation { padding: 1rem 1.2rem; background: #292112; border-left: 4px solid #f59e0b; border-radius: 8px; font-size: 0.95rem; color: #fde68a; line-height: 1.7; }
 
         /* Per-question timer */
         .q-timer-bar-wrap { background: #e2e8f0; border-radius: 999px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
@@ -197,8 +223,14 @@
 
     <!-- HOMEPAGE -->
     <div id="homePage">
-        <h1>🧬 NEET Biology Mastery</h1>
-        <p class="subtitle">Complete NCERT Coverage • 1600+ Questions • Smart Practice</p>
+        <h1>📚 NEET Mastery</h1>
+        <p class="subtitle">Complete NCERT Coverage • Smart Practice • Track Your Progress</p>
+
+        <!-- BIOLOGY SECTION -->
+        <div class="subject-heading">
+            <span class="subject-icon">🧬</span>
+            <span>Biology</span>
+        </div>
         <div class="topic-grid">
             <div class="topic-card topic-diversity" onclick="showChapters('diversity')">
                 <div class="topic-icon">🌍</div>
@@ -252,10 +284,24 @@
             </div>
             <div class="topic-card topic-custom" onclick="showCustomBuilder()">
                 <div class="topic-icon">⚡</div>
-                <h3>Generate Custom Test</h3>
+                <h3>Custom Test</h3>
                 <p>Mix any chapters • Personalized practice</p>
             </div>
         </div>
+
+        <!-- CHEMISTRY SECTION -->
+        <div class="subject-heading subject-chemistry">
+            <span class="subject-icon">⚗️</span>
+            <span>Chemistry</span>
+        </div>
+        <div class="topic-grid">
+            <div class="topic-card topic-coming-soon">
+                <div class="topic-icon">🔜</div>
+                <h3>Coming Soon</h3>
+                <p>Chemistry chapters will be added here</p>
+            </div>
+        </div>
+
     </div>
 
     <!-- CHAPTER SELECTION -->
@@ -385,8 +431,23 @@
                     <p id="avgTimeResult" style="color:#6366f1;">0s</p>
                 </div>
             </div>
-            <p id="resultMessage" style="font-size:1.3rem;color:#475569;margin:2rem 0;font-weight:500;"></p>
+            <p id="resultMessage" style="font-size:1.3rem;color:#94a3b8;margin:2rem 0;font-weight:500;"></p>
             <button class="btn btn-primary" onclick="restartQuiz()" style="padding:1.2rem 3rem;font-size:1.2rem;">Back to Home</button>
+        </div>
+
+        <!-- FULL QUESTION REVIEW -->
+        <div style="max-width:900px;margin:2.5rem auto 0;">
+            <h2 style="color:#f1f5f9;font-size:1.8rem;margin-bottom:1.5rem;text-align:center;">📝 Full Question Review</h2>
+
+            <!-- Filter tabs -->
+            <div style="display:flex;gap:0.8rem;margin-bottom:1.5rem;flex-wrap:wrap;justify-content:center;">
+                <button class="review-filter-btn active" id="filterAll" onclick="filterReview('all')">All Questions</button>
+                <button class="review-filter-btn" id="filterCorrect" onclick="filterReview('correct')">✅ Correct</button>
+                <button class="review-filter-btn" id="filterIncorrect" onclick="filterReview('incorrect')">❌ Incorrect</button>
+                <button class="review-filter-btn" id="filterUnanswered" onclick="filterReview('unanswered')">⏭ Unanswered</button>
+            </div>
+
+            <div id="fullReviewContainer"></div>
         </div>
     </div>
 
@@ -514,7 +575,7 @@ const questionBank = {
             explanation: "G.N. Ramachandran's models helped solve the structure of collagen. (Reference: NCERT page 86, last line of intro.)"
         },
         {
-            question: "Which of the following regarding the mitochondria is true? (A) They are the site of glycolysis. (B) They are primary site of protein synthesis. (C) They are double membrane bound organelles filled with a dense heterogenous fluid called the matrix. (D) They contain their own DNA. (E) They divide mostly by binary fission.",
+            question: "Which of the following regarding the mitochondria is true?\n(A) They are the site of glycolysis.\n(B) They are the primary site of protein synthesis.\n(C) They are double membrane bound organelles filled with a dense heterogenous fluid called the matrix.\n(D) They contain their own DNA.\n(E) They divide mostly by binary fission.",
             options: ["(A), (B), (D) and (E)", "(A), (C) and (E)", "(A) and (E)", "(D) and (E)"],
             correct: 3,
             explanation: "Only (D) and (E) are correct. The primary site of protein synthesis is ribosomes, not mitochondria. Glycolysis occurs in the cytoplasm, not mitochondria. The matrix is homogenous, not heterogenous."
@@ -537,7 +598,7 @@ const questionBank = {
             explanation: "Reserve materials in prokaryotic cells are stored in the form of inclusion bodies and are not bound by any membrane. Gas vacuoles are found in blue and green bacteria, not inclusion bodies. They are not similar to vacuoles and are mostly found in prokaryotes, not plants."
         },
         {
-            question: "Assertion: All living organisms are made up of cells and its products. Reason: Rudolf Virchow first concluded that all cells arise from pre-existing cells (Omnis cellula-e-cellula) by the process of binary fission.",
+            question: "Assertion and Reason — choose the correct option:\n(A) All living organisms are made up of cells and its products.\n(R) Rudolf Virchow first concluded that all cells arise from pre-existing cells (Omnis cellula-e-cellula) by the process of binary fission.",
             options: [
                 "Both statements are correct and (R) correctly explains (A)",
                 "Both statements are correct but (R) doesn't explain (A)",
@@ -560,7 +621,7 @@ const questionBank = {
             explanation: "Locomotion is not a function of the mesosome. Mesosomes help in respiration, increasing enzymatic content, and cell wall formation. Locomotion is carried out by flagella. (Reference: NCERT page 91, first paragraph.)"
         },
         {
-            question: "Assertion: Bacterial cells may be motile or non-motile. Reason: The bacterial motility depends on the presence or absence of flagella.",
+            question: "Assertion and Reason — choose the correct option:\n(A) Bacterial cells may be motile or non-motile.\n(R) The bacterial motility depends on the presence or absence of flagella.",
             options: [
                 "Both statements are true and (R) explains (A) correctly",
                 "Both statements are true but (R) doesn't explain (A) correctly",
@@ -638,7 +699,7 @@ const questionBank = {
             explanation: "Fluidity refers to the ability of membrane components to move within the membrane. (Reference: NCERT page 94, around the end of first paragraph.)"
         },
         {
-            question: "The fluid nature of the cell membrane does NOT help which of the following functions? (A) Cell growth (B) Secretion (C) Cell division (D) Formation of intercellular junctions (E) Respiration",
+            question: "The fluid nature of the cell membrane does NOT help which of the following functions?\n(A) Cell growth\n(B) Secretion\n(C) Cell division\n(D) Formation of intercellular junctions\n(E) Respiration",
             options: ["(A), (B), (C) and (D)", "(B), (D) and (E)", "(C) and (D) only", "None of the above"],
             correct: 3,
             explanation: "The fluid nature of the cell membrane helps in ALL of these functions — cell growth, secretion, cell division, and formation of intercellular junctions. None of them are excluded. (Reference: NCERT page 94, 2nd paragraph.)"
@@ -954,6 +1015,7 @@ let qTimerMax = 120;
 let qTimePaused = false;
 let questionTimes = [];
 let questionStatus = []; // 'unanswered' | 'correct' | 'incorrect' | 'reviewing'
+let userAnswers = [];    // stores which option index the user picked (-1 = unanswered)
 
 // ================================================================
 // GLOBAL TIMER
@@ -1000,7 +1062,7 @@ function startQTimer() {
 
 function pauseQTimer() {
     qTimePaused = true;
-    stopTimer(); // pause global timer too
+    stopTimer(); // pause global timer while reading explanation
     document.getElementById('pausedBanner').classList.remove('hidden');
 }
 
@@ -1154,12 +1216,20 @@ function startCustomTest() {
 
 function initQuiz() {
     stopTimer(); stopQTimer();
+    qTimePaused = false;
+    qTimeSpent = 0;
     currentQIndex = 0;
     score = 0; correct = 0; incorrect = 0; unanswered = 0;
     questionTimes = new Array(currentQuestions.length).fill(0);
     questionStatus = new Array(currentQuestions.length).fill('unanswered');
+    userAnswers = new Array(currentQuestions.length).fill(-1);
     document.getElementById('totalQ').textContent = currentQuestions.length;
     document.getElementById('currentScore').textContent = '0';
+    document.getElementById('pausedBanner').classList.add('hidden');
+    document.getElementById('submitBtn').classList.remove('hidden');
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('nextBtn').classList.add('hidden');
+    document.getElementById('prevBtn').classList.add('hidden');
     showPage('quizPage');
     buildReviewGrid();
     startTimer();
@@ -1215,7 +1285,7 @@ function loadQuestion() {
     stopQTimer();
     const q = currentQuestions[currentQIndex];
     document.getElementById('currentQ').textContent = currentQIndex + 1;
-    document.getElementById('questionText').textContent = q.question;
+    document.getElementById('questionText').innerHTML = q.question.replace(/\n/g, '<br>');
 
     const opts = document.getElementById('optionsContainer');
     opts.innerHTML = '';
@@ -1283,6 +1353,7 @@ function submitAnswer() {
     });
     if (selectedAns === q.correct) { score += 4; correct++; questionStatus[currentQIndex] = 'correct'; }
     else { score -= 1; incorrect++; questionStatus[currentQIndex] = 'incorrect'; }
+    userAnswers[currentQIndex] = selectedAns;
     document.getElementById('currentScore').textContent = score;
     document.getElementById('explanation').innerHTML = `<strong>Explanation:</strong> ${q.explanation}`;
     document.getElementById('explanation').classList.remove('hidden');
@@ -1350,6 +1421,76 @@ function showResults() {
         },
         options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
     });
+
+    buildFullReview('all');
+}
+
+// ================================================================
+// FULL QUESTION REVIEW
+// ================================================================
+let currentReviewFilter = 'all';
+
+function buildFullReview(filter) {
+    currentReviewFilter = filter;
+
+    // Update active tab
+    ['filterAll','filterCorrect','filterIncorrect','filterUnanswered'].forEach(id => {
+        document.getElementById(id).classList.remove('active');
+    });
+    const map = { all: 'filterAll', correct: 'filterCorrect', incorrect: 'filterIncorrect', unanswered: 'filterUnanswered' };
+    document.getElementById(map[filter]).classList.add('active');
+
+    const container = document.getElementById('fullReviewContainer');
+    container.innerHTML = '';
+
+    currentQuestions.forEach((q, i) => {
+        const status = questionStatus[i];
+        const userAns = userAnswers[i]; // -1 = unanswered
+
+        // Apply filter
+        if (filter === 'correct' && status !== 'correct') return;
+        if (filter === 'incorrect' && status !== 'incorrect') return;
+        if (filter === 'unanswered' && status !== 'unanswered') return;
+
+        const card = document.createElement('div');
+        card.className = `review-q-card review-${status === 'correct' ? 'correct' : status === 'incorrect' ? 'incorrect' : 'unanswered'}`;
+
+        const badge = status === 'correct'
+            ? '<span class="review-q-badge badge-correct">✅ Correct</span>'
+            : status === 'incorrect'
+            ? '<span class="review-q-badge badge-incorrect">❌ Incorrect</span>'
+            : '<span class="review-q-badge badge-unanswered">⏭ Unanswered</span>';
+
+        const timeSpent = questionTimes[i] > 0 ? `${questionTimes[i]}s` : '—';
+
+        let optionsHTML = q.options.map((opt, oi) => {
+            let cls = 'review-option';
+            if (oi === q.correct) cls += ' review-opt-correct';
+            else if (oi === userAns && userAns !== q.correct) cls += ' review-opt-selected-wrong';
+            const label = ['A', 'B', 'C', 'D'][oi];
+            return `<div class="${cls}">${label}. ${opt}</div>`;
+        }).join('');
+
+        card.innerHTML = `
+            <div class="review-q-header">
+                <span class="review-q-num">Question ${i + 1} &nbsp;•&nbsp; ⏱ ${timeSpent}</span>
+                ${badge}
+            </div>
+            <div class="review-q-text">${q.question.replace(/\n/g, '<br>')}</div>
+            <div class="review-options">${optionsHTML}</div>
+            <div class="review-explanation"><strong>💡 Explanation:</strong> ${q.explanation}</div>
+        `;
+
+        container.appendChild(card);
+    });
+
+    if (container.innerHTML === '') {
+        container.innerHTML = `<div style="text-align:center;color:#64748b;padding:2rem;font-size:1.1rem;">No questions in this category.</div>`;
+    }
+}
+
+function filterReview(filter) {
+    buildFullReview(filter);
 }
 
 function restartQuiz() {
@@ -1366,6 +1507,7 @@ document.getElementById('prevBtn').onclick = prevQuestion;
 </script>
 </body>
 </html>
+
 
 
 
