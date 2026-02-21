@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET Biology Complete Platform</title>
+    <title>NEET Biology & Chemistry Platform</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -72,6 +72,23 @@
         .topic-custom h3 { color: #c7d2fe; }
         .topic-custom p { color: #a5b4fc; }
         .topic-custom:hover { transform: translateY(-8px) scale(1.02); background: linear-gradient(135deg, #3730a3 0%, #5b21b6 100%); }
+
+        /* Chemistry topic colors */
+        .topic-physical-chem { border-color: #06b6d4; background: #082f46; }
+        .topic-physical-chem h3 { color: #22d3ee; }
+        .topic-physical-chem p { color: #67e8f9; }
+        .topic-physical-chem:hover { background: #0e475a; }
+
+        .topic-inorganic-chem { border-color: #d946ef; background: #3d0a54; }
+        .topic-inorganic-chem h3 { color: #e879f9; }
+        .topic-inorganic-chem p { color: #f0abfc; }
+        .topic-inorganic-chem:hover { background: #581c87; }
+
+        .topic-organic-chem { border-color: #fb923c; background: #3a1a0a; }
+        .topic-organic-chem h3 { color: #fed7aa; }
+        .topic-organic-chem p { color: #fedd5e; }
+        .topic-organic-chem:hover { background: #7c2d12; }
+
         .chapter-page { text-align: center; }
         .chapter-page h2 { color: #1e293b; font-size: 2rem; margin-bottom: 2rem; }
         .chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
@@ -138,7 +155,7 @@
         .q-timer-bar { height: 100%; border-radius: 999px; background: #3b82f6; transition: width 1s linear, background 0.5s; }
         .q-timer-bar.warning { background: #f59e0b; }
         .q-timer-bar.danger { background: #ef4444; }
-        .q-timer-label { font-size: 0.9rem; color: #64748b; margin-bottom: 0.4rem; display: flex; justify-content: space-between; }
+        .q-timer-label { font-size: 0.9rem; color: #94a3b8; margin-bottom: 0.4rem; display: flex; justify-content: space-between; }
         .paused-banner { background: #292112; border: 2px solid #f59e0b; border-radius: 10px; padding: 0.8rem 1.2rem; text-align: center; font-weight: 600; color: #fbbf24; margin-bottom: 1rem; font-size: 1rem; }
         .review-panel { background: #1e2130; border-radius: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); padding: 2rem; margin-top: 2rem; border: 1px solid #2d3348; }
         .review-panel h3 { color: #f1f5f9; font-size: 1.3rem; margin-bottom: 1.2rem; border-bottom: 2px solid #2d3348; padding-bottom: 0.8rem; }
@@ -153,60 +170,9 @@
         .review-btn.current-q { border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96,165,250,0.4); }
         .review-btn.reviewing { background: #2d1b4e; border-color: #a855f7; color: #d8b4fe; }
         .subject-heading { display: flex; align-items: center; gap: 0.8rem; font-size: 1.8rem; font-weight: 700; color: #4ade80; margin: 1rem 0 1.2rem 0; padding-bottom: 0.6rem; border-bottom: 3px solid #22c55e; }
-        .subject-heading.subject-chemistry { color: #60a5fa; border-bottom-color: #3b82f6; margin-top: 2.5rem; }
+        .subject-heading.subject-chemistry { color: #22d3ee; border-bottom-color: #06b6d4; margin-top: 2.5rem; }
         .subject-icon { font-size: 1.8rem; }
-        .topic-card.topic-coming-soon { border-color: #374151; background: #151824; opacity: 0.6; cursor: default; }
-        .topic-card.topic-coming-soon h3 { color: #94a3b8; }
-        .topic-card.topic-coming-soon p { color: #64748b; }
-        .topic-card.topic-coming-soon:hover { transform: none; box-shadow: none; }
         .hidden { display: none !important; }
-        .review-filter-btn { padding: 0.6rem 1.4rem; border-radius: 8px; border: 2px solid #2d3348; background: #1e2130; color: #94a3b8; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Poppins', sans-serif; }
-        .review-filter-btn:hover { border-color: #60a5fa; color: #f1f5f9; }
-        .review-filter-btn.active { background: #1e3a5f; border-color: #3b82f6; color: #60a5fa; }
-        .review-q-card { background: #1e2130; border-radius: 14px; padding: 1.8rem; margin-bottom: 1.2rem; border: 2px solid #2d3348; }
-        .review-q-card.review-correct { border-color: #22c55e; }
-        .review-q-card.review-incorrect { border-color: #ef4444; }
-        .review-q-card.review-unanswered { border-color: #f59e0b; }
-        .review-q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-        .review-q-num { font-size: 0.9rem; font-weight: 600; color: #94a3b8; }
-        .review-q-badge { font-size: 0.8rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 999px; }
-        .badge-correct { background: #14532d; color: #4ade80; }
-        .badge-incorrect { background: #7f1d1d; color: #fca5a5; }
-        .badge-unanswered { background: #292112; color: #fbbf24; }
-        .review-q-text { font-size: 1.05rem; color: #f1f5f9; font-weight: 500; line-height: 1.7; margin-bottom: 1.2rem; white-space: pre-line; }
-        .review-options { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.2rem; }
-        .review-option { padding: 0.8rem 1.2rem; border-radius: 8px; font-size: 0.95rem; border: 2px solid #2d3348; background: #151824; color: #cbd5e1; }
-        .review-option.review-opt-correct { background: #14532d; border-color: #22c55e; color: #4ade80; font-weight: 600; }
-        .review-option.review-opt-selected-wrong { background: #7f1d1d; border-color: #ef4444; color: #fca5a5; }
-        .review-explanation { padding: 1rem 1.2rem; background: #292112; border-left: 4px solid #f59e0b; border-radius: 8px; font-size: 0.95rem; color: #fde68a; line-height: 1.7; }
-
-        /* Per-question timer */
-        .q-timer-bar-wrap { background: #e2e8f0; border-radius: 999px; height: 8px; margin-bottom: 1.5rem; overflow: hidden; }
-        .q-timer-bar { height: 100%; border-radius: 999px; background: #3b82f6; transition: width 1s linear, background 0.5s; }
-        .q-timer-bar.warning { background: #f59e0b; }
-        .q-timer-bar.danger { background: #ef4444; }
-        .q-timer-label { font-size: 0.9rem; color: #64748b; margin-bottom: 0.4rem; display: flex; justify-content: space-between; }
-
-        /* Paused banner */
-        .paused-banner { background: #fef3c7; border: 2px solid #f59e0b; border-radius: 10px; padding: 0.8rem 1.2rem; text-align: center; font-weight: 600; color: #92400e; margin-bottom: 1rem; font-size: 1rem; }
-
-        /* Review panel */
-        .review-panel { background: white; border-radius: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.08); padding: 2rem; margin-top: 2rem; }
-        .review-panel h3 { color: #1e293b; font-size: 1.3rem; margin-bottom: 1.2rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.8rem; }
-        .review-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 0.6rem; }
-        .review-btn { width: 52px; height: 52px; border-radius: 10px; border: 2px solid #e2e8f0; background: #f8fafc; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; }
-        .review-btn:hover { transform: scale(1.08); }
-        .review-btn .q-num { font-size: 0.85rem; }
-        .review-btn .q-time { font-size: 0.65rem; font-weight: 400; color: #94a3b8; }
-        .review-btn.correct-q { background: #dcfce7; border-color: #22c55e; color: #15803d; }
-        .review-btn.incorrect-q { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
-        .review-btn.skipped-q { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
-        .review-btn.current-q { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.3); }
-        .review-btn.reviewing { background: #ede9fe; border-color: #7c3aed; color: #5b21b6; }
-
-        /* Quiz nav buttons */
-        .btn-prev { flex: 1; background: #64748b; color: white; padding: 1rem; font-size: 1.1rem; }
-        .btn-prev:hover { background: #475569; }
 
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
@@ -214,101 +180,48 @@
             .question-card { padding: 1.5rem; }
             .question-text { font-size: 1.2rem; }
             .quiz-buttons { flex-direction: column; }
-            .review-grid { grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); }
         }
     </style>
 </head>
 <body>
 <div class="container">
 
-    <!-- HOMEPAGE -->
+    <!-- HOMEPAGE - Main Categories -->
     <div id="homePage">
         <h1>📚 NEET Mastery</h1>
         <p class="subtitle">Complete NCERT Coverage • Smart Practice • Track Your Progress</p>
-
-        <!-- BIOLOGY SECTION -->
-        <div class="subject-heading">
-            <span class="subject-icon">🧬</span>
-            <span>Biology</span>
-        </div>
+        
         <div class="topic-grid">
-            <div class="topic-card topic-diversity" onclick="showChapters('diversity')">
-                <div class="topic-icon">🌍</div>
-                <h3>Diversity in Living World</h3>
-                <p>4 Chapters • 200 Questions</p>
-            </div>
-            <div class="topic-card topic-structural" onclick="showChapters('structural')">
-                <div class="topic-icon">🔬</div>
-                <h3>Structural Organisation</h3>
-                <p>3 Chapters • 150 Questions</p>
-            </div>
-            <div class="topic-card topic-cell" onclick="showChapters('cell')">
-                <div class="topic-icon">🧫</div>
-                <h3>Cell Structure & Function</h3>
-                <p>3 Chapters • 150 Questions</p>
-            </div>
-            <div class="topic-card topic-plant-phys" onclick="showChapters('plant_physiology')">
-                <div class="topic-icon">🌱</div>
-                <h3>Plant Physiology</h3>
-                <p>3 Chapters • 150 Questions</p>
-            </div>
-            <div class="topic-card topic-human-phys" onclick="showChapters('human_physiology')">
-                <div class="topic-icon">🫀</div>
-                <h3>Human Physiology</h3>
-                <p>6 Chapters • 300 Questions</p>
-            </div>
-            <div class="topic-card topic-reproduction" onclick="showChapters('reproduction')">
-                <div class="topic-icon">🌸</div>
-                <h3>Reproduction</h3>
-                <p>3 Chapters • 150 Questions</p>
-            </div>
-            <div class="topic-card topic-genetics" onclick="showChapters('genetics')">
+            <div class="topic-card topic-diversity" onclick="showSubjectTopics('biology')" style="grid-column: span 1;">
                 <div class="topic-icon">🧬</div>
-                <h3>Genetics & Evolution</h3>
-                <p>3 Chapters • 150 Questions</p>
+                <h3>Biology</h3>
+                <p>10 Topics • 1600+ Questions</p>
             </div>
-            <div class="topic-card topic-welfare" onclick="showChapters('welfare')">
-                <div class="topic-icon">🏥</div>
-                <h3>Biology & Human Welfare</h3>
-                <p>2 Chapters • 100 Questions</p>
-            </div>
-            <div class="topic-card topic-biotech" onclick="showChapters('biotech')">
+            <div class="topic-card topic-physical-chem" onclick="showSubjectTopics('chemistry')" style="grid-column: span 1;">
                 <div class="topic-icon">⚗️</div>
-                <h3>Biotechnology</h3>
-                <p>2 Chapters • 100 Questions</p>
+                <h3>Chemistry</h3>
+                <p>3 Sections • 1000+ Questions</p>
             </div>
-            <div class="topic-card topic-ecology" onclick="showChapters('ecology')">
-                <div class="topic-icon">🌿</div>
-                <h3>Ecology</h3>
-                <p>3 Chapters • 150 Questions</p>
-            </div>
-            <div class="topic-card topic-custom" onclick="showCustomBuilder()">
+            <div class="topic-card topic-custom" onclick="showCustomBuilder()" style="grid-column: span 1;">
                 <div class="topic-icon">⚡</div>
-                <h3>Custom Test</h3>
+                <h3>Generate a Test</h3>
                 <p>Mix any chapters • Personalized practice</p>
             </div>
         </div>
+    </div>
 
-        <!-- CHEMISTRY SECTION -->
-        <div class="subject-heading subject-chemistry">
-            <span class="subject-icon">⚗️</span>
-            <span>Chemistry</span>
-        </div>
-        <div class="topic-grid">
-            <div class="topic-card topic-coming-soon">
-                <div class="topic-icon">🔜</div>
-                <h3>Coming Soon</h3>
-                <p>Chemistry chapters will be added here</p>
-            </div>
-        </div>
-
+    <!-- TOPIC SELECTION PAGE (Biology or Chemistry) -->
+    <div id="topicPage" class="chapter-page hidden">
+        <h2 id="topicPageTitle">Select Topic</h2>
+        <div class="topic-grid" id="topicPageGrid"></div>
+        <div style="text-align:center"><button class="btn btn-back" onclick="backToHome()">← Back to Home</button></div>
     </div>
 
     <!-- CHAPTER SELECTION -->
     <div id="chapterPage" class="chapter-page hidden">
         <h2 id="chapterTitle">Select Chapter</h2>
         <div class="chapter-grid" id="chapterGrid"></div>
-        <div style="text-align:center"><button class="btn btn-back" onclick="backToHome()">← Back to Home</button></div>
+        <div style="text-align:center"><button class="btn btn-back" onclick="backToTopics()">← Back</button></div>
     </div>
 
     <!-- CONTROLS -->
@@ -325,9 +238,9 @@
         <div class="input-section">
             <h3>⏱️ Time Limit</h3>
             <div class="input-group">
-                <input type="range" id="timerSlider" min="1" max="120" value="30" oninput="updateTimerCount()">
+                <input type="range" id="timerSlider" min="0" max="180" value="30" oninput="updateTimerCount()">
                 <div class="value-display" id="timerDisplay">30</div>
-                <label>Minutes (1–120)</label>
+                <label id="timerLabel">Minutes (0 = No Time Limit, 1–180)</label>
             </div>
         </div>
         <button class="btn btn-primary" onclick="startQuiz()" style="padding:1.2rem 3rem;font-size:1.2rem;">Start Test →</button>
@@ -348,8 +261,9 @@
             </div>
             <div class="input-group" style="margin-top:1rem;">
                 <label>Time limit (minutes):</label>
-                <input type="range" id="customTimerSlider" min="1" max="120" value="30" oninput="updateCustomTimer()">
+                <input type="range" id="customTimerSlider" min="0" max="180" value="30" oninput="updateCustomTimer()">
                 <div class="value-display" id="customTimerDisplay">30</div>
+                <label style="font-size:0.9rem;color:#94a3b8;">0 = No Time Limit, 1–180</label>
             </div>
             <div class="selected-count" id="selectedCount">No chapters selected</div>
         </div>
@@ -383,6 +297,8 @@
                     <button class="btn btn-prev hidden" id="prevBtn">← Previous</button>
                     <button class="btn btn-submit" id="submitBtn" disabled>Submit Answer</button>
                     <button class="btn btn-next hidden" id="nextBtn">Next Question →</button>
+                    <button class="btn" id="skipBtn" style="background:#f59e0b;color:white;">Skip Question</button>
+                    <button class="btn" id="quitBtn" style="background:#ef4444;color:white;">Quit Quiz</button>
                 </div>
             </div>
 
@@ -390,12 +306,12 @@
             <div class="review-panel">
                 <h3>📋 Question Review Panel</h3>
                 <div class="review-grid" id="reviewGrid"></div>
-                <div style="margin-top:1rem;font-size:0.85rem;color:#64748b;display:flex;gap:1.2rem;flex-wrap:wrap;">
+                <div style="margin-top:1rem;font-size:0.85rem;color:#94a3b8;display:flex;gap:1.2rem;flex-wrap:wrap;">
                     <span>🟢 Correct</span>
                     <span>🔴 Incorrect</span>
                     <span>🟡 Skipped/Unanswered</span>
                     <span>🟣 Reviewing</span>
-                    <span style="color:#3b82f6;font-weight:600;">Border = Current</span>
+                    <span style="color:#60a5fa;font-weight:600;">Border = Current</span>
                 </div>
             </div>
         </div>
@@ -426,32 +342,19 @@
                     <h3>Total</h3>
                     <p id="totalQuestionsResult">0</p>
                 </div>
-                <div class="score-item">
-                    <h3>Avg Time / Q</h3>
-                    <p id="avgTimeResult" style="color:#6366f1;">0s</p>
-                </div>
             </div>
             <p id="resultMessage" style="font-size:1.3rem;color:#94a3b8;margin:2rem 0;font-weight:500;"></p>
             <button class="btn btn-primary" onclick="restartQuiz()" style="padding:1.2rem 3rem;font-size:1.2rem;">Back to Home</button>
         </div>
 
         <!-- FULL QUESTION REVIEW -->
-        <div style="max-width:900px;margin:2.5rem auto 0;">
-            <h2 style="color:#f1f5f9;font-size:1.8rem;margin-bottom:1.5rem;text-align:center;">📝 Full Question Review</h2>
-
-            <!-- Filter tabs -->
-            <div style="display:flex;gap:0.8rem;margin-bottom:1.5rem;flex-wrap:wrap;justify-content:center;">
-                <button class="review-filter-btn active" id="filterAll" onclick="filterReview('all')">All Questions</button>
-                <button class="review-filter-btn" id="filterCorrect" onclick="filterReview('correct')">✅ Correct</button>
-                <button class="review-filter-btn" id="filterIncorrect" onclick="filterReview('incorrect')">❌ Incorrect</button>
-                <button class="review-filter-btn" id="filterUnanswered" onclick="filterReview('unanswered')">⏭ Unanswered</button>
-            </div>
-
+        <div style="max-width:1000px;margin:3rem auto;">
+            <h2 style="color:#f1f5f9;font-size:1.8rem;margin-bottom:1.5rem;text-align:center;">📝 Question Review</h2>
             <div id="fullReviewContainer"></div>
         </div>
     </div>
 
-</div><!-- /container -->
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -540,14 +443,50 @@ const topicsData = {
             {id:'ecosystem', name:'Ecosystem'},
             {id:'biodiversity', name:'Biodiversity'}
         ]
+    },
+    // CHEMISTRY TOPICS
+    physical_chemistry: {
+        name: 'Physical Chemistry',
+        chapters: [
+            {id:'mole_concept', name:'Mole Concept'},
+            {id:'atomic_structure', name:'Atomic Structure'},
+            {id:'thermodynamics', name:'Thermodynamics'},
+            {id:'redox_reactions', name:'Redox Reactions'},
+            {id:'equilibrium', name:'Equilibrium'},
+            {id:'solutions', name:'Solutions'},
+            {id:'chemical_kinetics', name:'Chemical Kinetics'},
+            {id:'electrochemistry', name:'Electrochemistry'}
+        ]
+    },
+    inorganic_chemistry: {
+        name: 'Inorganic Chemistry',
+        chapters: [
+            {id:'periodic_table', name:'Periodic Table'},
+            {id:'chemical_bonding', name:'Chemical Bonding'},
+            {id:'d_f_block', name:'D and F Block'},
+            {id:'coordination_compounds', name:'Coordination Compounds'}
+        ]
+    },
+    organic_chemistry: {
+        name: 'Organic Chemistry',
+        chapters: [
+            {id:'goc', name:'General Organic Compounds (GOC)'},
+            {id:'hydrocarbons', name:'Hydrocarbons'},
+            {id:'haloalkanes_haloarenes', name:'Haloalkanes and Haloarenes'},
+            {id:'alcohols_phenols_ethers', name:'Alcohols, Phenols and Ethers'},
+            {id:'aldehydes_ketones_carboxylic', name:'Aldehydes, Ketones and Carboxylic Acids'},
+            {id:'amines', name:'Amines'},
+            {id:'biomolecules_chem', name:'Biomolecules'},
+            {id:'qualitative_quantitative', name:'Qualitative and Quantitative Analysis'}
+        ]
     }
 };
 
 // ================================================================
-// QUESTION BANK
-// Each entry: { question, options:[A,B,C,D], correct:0-3, explanation }
+// QUESTION BANK - All chapters initialized as empty arrays
 // ================================================================
 const questionBank = {
+    // BIOLOGY
     living_world: [],
     biological_classification: [],
     plant_kingdom: [],
@@ -556,425 +495,111 @@ const questionBank = {
     anatomy_flowering: [],
     structural_animals: [],
     cell_unit: [
-        {
-            question: "Which of the following helps in cell division in animals?",
-            options: ["Mesosome", "Centromere", "Centriole", "Cell plate"],
-            correct: 2,
-            explanation: "Centrioles help in cell division in animals by forming the spindle apparatus. Cell plate occurs in plants and not animals. Mesosomes occur in prokaryotes and not in animals. Centromere is a part of the chromosome but doesn't directly drive cell division."
-        },
-        {
-            question: "Which of the following doesn't come under the gross physiological processes performed inside the cell?",
-            options: ["Recognition", "Memory", "Protein synthesis", "Defense"],
-            correct: 2,
-            explanation: "While protein synthesis does occur inside a cell, it doesn't come under the gross physiological processes performed by the cell. The gross physiological processes include recognition, memory, defense, etc."
-        },
-        {
-            question: "G.N. Ramachandran's models helped solve the structure of which of the following?",
-            options: ["Protein", "DNA", "Collagen", "Cell membrane"],
-            correct: 2,
-            explanation: "G.N. Ramachandran's models helped solve the structure of collagen. (Reference: NCERT page 86, last line of intro.)"
-        },
-        {
-            question: "Which of the following regarding the mitochondria is true?\n(A) They are the site of glycolysis.\n(B) They are the primary site of protein synthesis.\n(C) They are double membrane bound organelles filled with a dense heterogenous fluid called the matrix.\n(D) They contain their own DNA.\n(E) They divide mostly by binary fission.",
-            options: ["(A), (B), (D) and (E)", "(A), (C) and (E)", "(A) and (E)", "(D) and (E)"],
-            correct: 3,
-            explanation: "Only (D) and (E) are correct. The primary site of protein synthesis is ribosomes, not mitochondria. Glycolysis occurs in the cytoplasm, not mitochondria. The matrix is homogenous, not heterogenous."
-        },
-        {
-            question: "Which of the following scientist said that all plants are made up of cells and its products?",
-            options: ["Adolf Virchow", "Theodore Schwann", "Mathias Schleiden", "Robert Brown"],
-            correct: 2,
-            explanation: "Mathias Schleiden stated that all plants are made up of cells and its products. (Reference: NCERT page 88, first paragraph.)"
-        },
-        {
-            question: "Reserve materials in prokaryotic cells are:",
-            options: [
-                "Only found in blue and green bacteria",
-                "Stored in the form of inclusion bodies and are not bound by any membrane",
-                "Similar/analogous to gas vacuoles in plants",
-                "Mostly found in plants and store starch"
-            ],
-            correct: 1,
-            explanation: "Reserve materials in prokaryotic cells are stored in the form of inclusion bodies and are not bound by any membrane. Gas vacuoles are found in blue and green bacteria, not inclusion bodies. They are not similar to vacuoles and are mostly found in prokaryotes, not plants."
-        },
-        {
-            question: "Assertion and Reason — choose the correct option:\n(A) All living organisms are made up of cells and its products.\n(R) Rudolf Virchow first concluded that all cells arise from pre-existing cells (Omnis cellula-e-cellula) by the process of binary fission.",
-            options: [
-                "Both statements are correct and (R) correctly explains (A)",
-                "Both statements are correct but (R) doesn't explain (A)",
-                "(A) is true but (R) is false",
-                "(A) is false but (R) is true"
-            ],
-            correct: 2,
-            explanation: "(A) is true but (R) is false. Rudolf Virchow did conclude that all cells arise from pre-existing cells, however cells do not use binary fission — they use mitosis or meiosis."
-        },
-        {
-            question: "Bacteria can be classified on the basis of differences in the?",
-            options: ["Cell wall", "Plasma membrane", "Nuclear membrane", "Cell envelope"],
-            correct: 3,
-            explanation: "Bacteria are classified on the basis of differences in the cell envelope. (Reference: NCERT page 90, near the end of the 2nd paragraph.)"
-        },
-        {
-            question: "Which of the following is NOT a function of the mesosome?",
-            options: ["Respiration", "Increasing the enzymatic contents", "Cell wall formation", "Locomotion"],
-            correct: 3,
-            explanation: "Locomotion is not a function of the mesosome. Mesosomes help in respiration, increasing enzymatic content, and cell wall formation. Locomotion is carried out by flagella. (Reference: NCERT page 91, first paragraph.)"
-        },
-        {
-            question: "Assertion and Reason — choose the correct option:\n(A) Bacterial cells may be motile or non-motile.\n(R) The bacterial motility depends on the presence or absence of flagella.",
-            options: [
-                "Both statements are true and (R) explains (A) correctly",
-                "Both statements are true but (R) doesn't explain (A) correctly",
-                "(A) is true but (R) is false",
-                "Both (A) and (R) are false"
-            ],
-            correct: 0,
-            explanation: "Both statements are true and the reason correctly explains the assertion. Bacterial motility does depend on the presence or absence of flagella. (Reference: NCERT page 91, end of 1st paragraph.)"
-        },
-        {
-            question: "Which of the following statements is correct?",
-            options: [
-                "Most prokaryotes have a simple cell envelope",
-                "The cell wall in bacteria can help in interaction with the outside world",
-                "The cell envelope is tightly bound where the outermost is cell wall followed by glycocalyx and cell membrane as the innermost layer",
-                "Each layer of the cell envelope performs distinct functions but act together as a protective unit"
-            ],
-            correct: 3,
-            explanation: "Each layer of the cell envelope performs distinct functions but acts together as a protective unit. Most prokaryotes have a complex, not simple, cell envelope. The glycocalyx is the outermost layer, followed by the cell wall, then the cell membrane."
-        },
-        {
-            question: "Which of the following regarding the cytoplasm is false?",
-            options: [
-                "It is present in both eukaryotes and prokaryotes",
-                "It is also called the main arena of cellular activities",
-                "It is also found in both plants and animals",
-                "Ribosomes are only found in the cytoplasm"
-            ],
-            correct: 3,
-            explanation: "Ribosomes are not only found in the cytoplasm — they are also found within the mitochondria, chloroplasts, and on the rough ER. (Reference: NCERT page 88, near 2nd paragraph, last line.)"
-        },
-        {
-            question: "Which of the following is different in prokaryotes and eukaryotes?",
-            options: ["Cytoplasm", "70S ribosomes", "Rate of replication", "Genetic material"],
-            correct: 2,
-            explanation: "The rate of replication is different — prokaryotes multiply more rapidly compared to eukaryotes. Both can have 70S ribosomes (prokaryotes always; eukaryotes in organelles). Both have genetic material and cytoplasm."
-        },
-        {
-            question: "Which of the following cells played a major role in understanding the structure of the plasma membrane when electron microscopes were discovered in 1950?",
-            options: ["Red blood cells", "Neurons", "Most eukaryotic cells", "Columnar epithelial cells"],
-            correct: 0,
-            explanation: "Red blood cells played a major role in understanding the structure of the plasma membrane. (Reference: NCERT page 93, first paragraph.)"
-        },
-        {
-            question: "How are lipids arranged in the cell membrane?",
-            options: [
-                "The head is polar and present on the outer side, while the tail is hydrophilic and present on the inner side",
-                "The head is non-polar and present on the outer side, while the tail is hydrophobic and present on the inner side",
-                "The head is polar and present on the inner side, while the tail is hydrophobic and present on the outer side",
-                "The head is polar and present towards the outer side, while the tail is hydrophobic and present towards the inner side"
-            ],
-            correct: 3,
-            explanation: "The polar heads of lipids face outward (towards the aqueous environment) and the hydrophobic tails face inward. (Reference: NCERT page 93, mid paragraph.)"
-        },
-        {
-            question: "How are proteins classified in the cell membrane?",
-            options: [
-                "On the basis of ease of extraction",
-                "On the presence or absence of a phosphate group",
-                "On the shape",
-                "Depending on their mass"
-            ],
-            correct: 0,
-            explanation: "Proteins in the cell membrane are classified on the basis of ease of extraction — giving rise to peripheral and integral proteins. (Reference: NCERT page 93, end paragraph.)"
-        },
-        {
-            question: "Fluidity can also be called:",
-            options: [
-                "The quality of proteins inside the cell membrane",
-                "The semi-permeable nature of the cell membrane",
-                "The ability to move within the membrane",
-                "The hydrophobic nature of the lipids"
-            ],
-            correct: 2,
-            explanation: "Fluidity refers to the ability of membrane components to move within the membrane. (Reference: NCERT page 94, around the end of first paragraph.)"
-        },
-        {
-            question: "The fluid nature of the cell membrane does NOT help which of the following functions?\n(A) Cell growth\n(B) Secretion\n(C) Cell division\n(D) Formation of intercellular junctions\n(E) Respiration",
-            options: ["(A), (B), (C) and (D)", "(B), (D) and (E)", "(C) and (D) only", "None of the above"],
-            correct: 3,
-            explanation: "The fluid nature of the cell membrane helps in ALL of these functions — cell growth, secretion, cell division, and formation of intercellular junctions. None of them are excluded. (Reference: NCERT page 94, 2nd paragraph.)"
-        },
-        {
-            question: "Which of the following is correct regarding polar molecules and their movement through the cell membrane?",
-            options: [
-                "They can move through the cell membrane by simple diffusion",
-                "They can move through the cell membrane with the help of a carrier protein",
-                "They cannot move through the cell membrane at all",
-                "They can move through the cell membrane against the concentration gradient"
-            ],
-            correct: 1,
-            explanation: "Polar molecules require a carrier protein to move through the cell membrane. Simple diffusion is for neutral solutes. Moving against the concentration gradient applies to ions. (Reference: NCERT page 94, 2nd paragraph.)"
-        },
-        {
-            question: "The middle lamella is mainly composed of?",
-            options: ["Calcium pectate", "Magnesium pectate", "Chitin", "Hemicellulose"],
-            correct: 0,
-            explanation: "The middle lamella is mainly composed of calcium pectate, which helps in holding adjacent cells together. (Reference: NCERT page 94, under the cell wall sub-heading.)"
-        },
-        {
-            question: "Which of the following is true about the cell wall?",
-            options: [
-                "The primary cell wall is present near the outer side of the matured cell",
-                "The cell wall may be traversed by middle lamella which connects the nucleus of both cells",
-                "The secondary cell wall is present on the inner side towards the cell membrane",
-                "Cell wall can help in infection and damage"
-            ],
-            correct: 2,
-            explanation: "The secondary cell wall is present on the inner side, towards the cell membrane. The primary cell wall is usually absent in matured cells. The middle lamella connects adjacent cells through the cytoplasm, not the nucleus. Cell wall provides protection against damage and infection, not cause it."
-        },
-        {
-            question: "Which of the following is NOT a part of the endomembrane system?",
-            options: ["Lysosomes", "Mitochondria", "Vacuoles", "Golgi complex"],
-            correct: 1,
-            explanation: "Mitochondria are not a part of the endomembrane system because their functions are not coordinated with the ER, Golgi, lysosomes, and vacuoles that form the endomembrane system."
-        },
-        {
-            question: "The ER divides the intracellular space into 2 parts mainly called as:",
-            options: [
-                "Intraluminal (inside ER) and luminal (outside ER)",
-                "Luminal (inside ER) and intraluminal (outside ER)",
-                "Luminal (inside ER) and extraluminal (outside ER)",
-                "Intraluminal (inside ER) and extraluminal (outside ER)"
-            ],
-            correct: 2,
-            explanation: "The ER divides the intracellular space into luminal (inside the ER) and extraluminal (outside the ER) compartments. (Reference: NCERT page 95, 2nd paragraph.)"
-        },
-        {
-            question: "Which of the following is the site for lipid synthesis?",
-            options: ["RER", "Ribosome", "SER", "Nucleus"],
-            correct: 2,
-            explanation: "The Smooth Endoplasmic Reticulum (SER) is the site for lipid synthesis. (Reference: NCERT page 95, near the end of 3rd paragraph.)"
-        },
-        {
-            question: "Which of the following is incorrect regarding Golgi bodies?",
-            options: [
-                "They are spherical in shape",
-                "The cisternae of Golgi bodies are stacked parallel to each other",
-                "The cis and trans face function very differently",
-                "The vesicles fuse with cis face and move towards the trans face or the maturing face"
-            ],
-            correct: 0,
-            explanation: "Golgi bodies are disc-shaped, not spherical. (Reference: NCERT page 95, near the end.)"
-        },
-        {
-            question: "Lysosomes are rich in many hydrolytic enzymes. Which of the following is NOT present in a lysosome?",
-            options: ["Lipase", "Nucleases", "Proteases", "HCl"],
-            correct: 3,
-            explanation: "HCl is not present in lysosomes. Lysosomes contain hydrolytic enzymes like lipases, proteases, and nucleases (capable of digesting nucleic acids). (Reference: NCERT page 96, under the lysosome section.)"
-        },
-        {
-            question: "Which of the following statements is incorrect regarding vacuoles?",
-            options: [
-                "Concentration gradient is higher in cytoplasm compared to vacuoles",
-                "Contractile vacuole helps in osmoregulation in Amoeba",
-                "Vacuoles contain mainly useless products of the cell",
-                "Tonoplast facilitates the transport of a number of ions into the vacuole"
-            ],
-            correct: 0,
-            explanation: "The concentration gradient is actually higher in vacuoles compared to the cytoplasm, not the other way around. (Reference: NCERT page 96, vacuole section.)"
-        },
-        {
-            question: "Which of the following cannot be the shape of mitochondria?",
-            options: ["Rod shaped", "Cylindrical", "Sausage shaped", "Bean shaped"],
-            correct: 3,
-            explanation: "Mitochondria can be cylindrical, rod-shaped, or sausage-shaped but NOT bean-shaped. Bean shape is not a described shape of mitochondria."
-        },
-        {
-            question: "Which of the following is incorrect regarding the mitochondria?",
-            options: [
-                "They contain multiple infoldings called cristae",
-                "The two membranes contain their own enzymes with similar or different functions",
-                "They contain double circular DNA molecule and a few RNA molecules",
-                "They mostly divide by binary fission"
-            ],
-            correct: 2,
-            explanation: "Mitochondria contain a single circular DNA molecule, not double. They do contain a few RNA molecules, and do divide by binary fission."
-        },
-        {
-            question: "Plastids are found in which of the following?",
-            options: ["Plants only", "Euglenoids only", "Both plants and euglenoids", "Animals"],
-            correct: 2,
-            explanation: "Plastids are found in both plants and euglenoids. (Reference: NCERT page 97, under the plastid section.)"
-        },
-        {
-            question: "Match the following correctly: (i) Chromoplast, (ii) Aleuroplast, (iii) Elaioplast, (iv) Amyloplast — (a) Oil and fats, (b) Pigments, (c) Proteins, (d) Starch",
-            options: [
-                "(i)-(b), (ii)-(c), (iii)-(d), (iv)-(a)",
-                "(i)-(b), (ii)-(c), (iii)-(a), (iv)-(d)",
-                "(i)-(c), (ii)-(b), (iii)-(d), (iv)-(d)",
-                "(i)-(b), (ii)-(a), (iii)-(c), (iv)-(d)"
-            ],
-            correct: 1,
-            explanation: "Chromoplast stores pigments, Aleuroplast stores proteins, Elaioplast stores oils and fats, Amyloplast stores starch. (Reference: NCERT page 98.)"
-        },
-        {
-            question: "The length of chloroplast in micrometers is:",
-            options: ["6–8", "7–11", "0.6–1.2", "5–10"],
-            correct: 3,
-            explanation: "The length of chloroplast is 5–10 micrometers. (Reference: NCERT page 98, mid paragraph.)"
-        },
-        {
-            question: "Which of the following regarding the chloroplast is incorrect?",
-            options: [
-                "They contain their own double stranded DNA",
-                "Stroma of chloroplast can help in the synthesis of carbohydrates and proteins",
-                "Chloroplasts usually have slightly smaller ribosomes compared to the cytoplasm",
-                "The number of chloroplasts varies from 1–50 depending on the type of cell"
-            ],
-            correct: 3,
-            explanation: "The number of chloroplasts varies from 1–40 per cell, not 1–50. (Reference: NCERT page 98.)"
-        },
-        {
-            question: "Ribosomes were first discovered by?",
-            options: ["Camillo Golgi", "Mendel", "George Palade", "Flemming"],
-            correct: 2,
-            explanation: "Ribosomes were first discovered by George Palade. (Reference: NCERT page 98, under the ribosome section.)"
-        },
-        {
-            question: "Cytoskeleton is made up of?",
-            options: ["Protein", "Ribosomes", "Chitin", "Tubulin proteins"],
-            correct: 0,
-            explanation: "The cytoskeleton is made up of protein filaments. (Reference: NCERT page 98, near the cytoskeleton section.)"
-        },
-        {
-            question: "Which of the following regarding cilia and flagella is incorrect?",
-            options: [
-                "Cilia are small structures which work like oars",
-                "Flagella is similar in structure in eukaryotes and prokaryotes",
-                "They both have a core called axoneme which possesses a number of microtubules",
-                "Both share a common origin"
-            ],
-            correct: 1,
-            explanation: "Flagella in eukaryotes and prokaryotes are structurally different. The eukaryotic flagellum has a 9+2 arrangement of microtubules, whereas prokaryotic flagella are made of flagellin protein."
-        },
-        {
-            question: "Which of the following have a cartwheel-like organisation?",
-            options: ["Centrosome", "Centrioles", "Both centrosome and centrioles", "Cilia and flagella"],
-            correct: 1,
-            explanation: "Centrioles have a cartwheel-like organisation. Centrioles are the structural components found within the centrosome."
-        },
-        {
-            question: "Nucleus was first discovered by?",
-            options: ["Robert Hooke", "Flemming", "Robert Brown", "George Palade"],
-            correct: 2,
-            explanation: "The nucleus was first discovered by Robert Brown. (Reference: NCERT page 100, under the nucleus section.)"
-        },
-        {
-            question: "The perinuclear space measured in nanometers is around:",
-            options: ["10–20", "25–100", "50–100", "10–50"],
-            correct: 3,
-            explanation: "The perinuclear space is approximately 10–50 nm. (Reference: NCERT page 100, nucleus section.)"
-        },
-        {
-            question: "Nuclear pores present in the nucleus provide passage for which materials?",
-            options: ["RNA and DNA", "Chromosomes and RNA", "Proteins and RNA", "DNA and proteins"],
-            correct: 2,
-            explanation: "Nuclear pores provide passage for proteins (moving into the nucleus) and RNA (moving out of the nucleus). (Reference: NCERT page 100, near the end.)"
-        },
-        {
-            question: "Which of the following is NOT true regarding the nucleolus?",
-            options: [
-                "Larger and more numerous nucleoli are present in cells which carry out protein synthesis",
-                "They are spherical in shape",
-                "They are usually single membrane bound organelles",
-                "It is an active site for RNA synthesis"
-            ],
-            correct: 3,
-            explanation: "The nucleolus is an active site for RNA synthesis (ribosomal RNA). It is NOT membrane bound — option 3 is incorrect. Options 1 and 2 are partially correct but not fully accurate."
-        },
-        {
-            question: "Chromosomes are differentiated on the basis of?",
-            options: [
-                "Position of kinetochore",
-                "Position of centromere",
-                "Type of proteins present in the chromosome",
-                "Length of the DNA present in them"
-            ],
-            correct: 1,
-            explanation: "Chromosomes are differentiated on the basis of the position of the centromere. (Reference: NCERT page 101, mid paragraph.)"
-        },
-        {
-            question: "Microbodies are:",
-            options: [
-                "Double membrane bound minute vesicles present in animal cells",
-                "Not bounded by any membrane and contain enzymes",
-                "Specifically found in plant cells",
-                "Minute membrane bound vesicles present in both plants and animals and contain various enzymes"
-            ],
-            correct: 3,
-            explanation: "Microbodies are minute membrane bound vesicles present in both plant and animal cells and contain various enzymes. (Reference: NCERT page 102, end of chapter.)"
-        },
-        {
-            question: "The basal body of cilia and flagella is formed by?",
-            options: ["Microtubules", "Cytoskeleton", "Ribosome", "Centrosome and centriole"],
-            correct: 3,
-            explanation: "The basal body of cilia and flagella is formed by the centrosome and centriole. (Reference: NCERT page 102, near the summary.)"
-        },
-        {
-            question: "What percent of proteins and lipids are present in the plasma membrane?",
-            options: [
-                "52% protein, 48% lipids",
-                "52% lipid, 48% proteins",
-                "52% protein, 40% lipids",
-                "52% lipids and 40% proteins"
-            ],
-            correct: 2,
-            explanation: "The plasma membrane is composed of approximately 52% protein and 40% lipids. (Reference: NCERT page 93, end of cell membrane section.)"
-        },
-        {
-            question: "Which of the following is one of the longest cells?",
-            options: ["Nerve cells", "Neurons", "Columnar cells", "Blood cells"],
-            correct: 0,
-            explanation: "Nerve cells (also known as neurons) are one of the longest cells in the body. 'Nerve cells' and 'neurons' refer to the same thing, but option 1 is the more complete answer as given in NCERT."
-        },
-        {
-            question: "What is the length of the smallest cell in micrometers?",
-            options: ["3", "0.03", "0.5", "0.3"],
-            correct: 3,
-            explanation: "The smallest cells are approximately 0.3 micrometers in length (PPLO – Pleuro Pneumonia Like Organisms). (Reference: NCERT page 88, near the end.)"
-        },
-        {
-            question: "Why is the cell considered the unit of all living organisms?",
-            options: [
-                "Because the first living organisms were prokaryotes",
-                "Without a cell there is no life",
-                "Anything less than one single cell doesn't ensure independent living",
-                "Cells divide by meiosis"
-            ],
-            correct: 2,
-            explanation: "The cell is considered the unit of life because anything less than one single cell cannot ensure independent living. (Reference: NCERT page 87.)"
-        },
-        {
-            question: "The smallest living organisms are?",
-            options: ["PPLO", "Bacterial cells", "Viruses", "Parasites"],
-            correct: 0,
-            explanation: "The smallest living organisms are PPLO (Pleuro Pneumonia Like Organisms), also known as Mycoplasma. (Reference: NCERT page 89.)"
-        },
-        {
-            question: "Which of the following shapes is NOT a shape of a cell?",
-            options: ["Cubical", "Cup shaped", "Irregular", "Polygonal"],
-            correct: 1,
-            explanation: "Cells can be disc-shaped, not cup-shaped. RBCs for example are biconcave disc-shaped. Cup-shaped is not a described shape of animal or plant cells."
-        },
-        {
-            question: "The antibiotic resistance of bacteria is due to?",
-            options: ["Tough glycocalyx layer", "Plasmid", "Rigid cell wall", "Random mutation"],
-            correct: 1,
-            explanation: "Antibiotic resistance in bacteria is due to plasmids, which carry resistance genes. (Reference: NCERT page 90, mid paragraph.)"
-        }
+        {question: "Which of the following helps in cell division in animals?", options: ["Mesosome", "Centromere", "Centriole", "Cell plate"], correct: 2, explanation: "Centrioles help in cell division in animals by forming the spindle apparatus. Cell plate occurs in plants and not animals. Mesosomes occur in prokaryotes and not in animals. Centromere is a part of the chromosome but doesn't directly drive cell division."},
+        {question: "Which of the following doesn't come under the gross physiological processes performed inside the cell?", options: ["Recognition", "Memory", "Protein synthesis", "Defense"], correct: 2, explanation: "While protein synthesis does occur inside a cell, it doesn't come under the gross physiological processes performed by the cell. The gross physiological processes include recognition, memory, defense, etc."},
+        {question: "G.N. Ramachandran's models helped solve the structure of which of the following?", options: ["Protein", "DNA", "Collagen", "Cell membrane"], correct: 2, explanation: "G.N. Ramachandran's models helped solve the structure of collagen."},
+        {question: "Which of the following regarding the mitochondria is true?\n(A) They are the site of glycolysis.\n(B) They are the primary site of protein synthesis.\n(C) They are double membrane bound organelles filled with a dense heterogenous fluid called the matrix.\n(D) They contain their own DNA.\n(E) They divide mostly by binary fission.", options: ["(A), (B), (D) and (E)", "(A), (C) and (E)", "(A) and (E)", "(D) and (E)"], correct: 3, explanation: "Only (D) and (E) are correct. The primary site of protein synthesis is ribosomes, not mitochondria. Glycolysis occurs in the cytoplasm, not mitochondria. The matrix is homogenous, not heterogenous."},
+        {question: "Which of the following scientist said that all plants are made up of cells and its products?", options: ["Adolf Virchow", "Theodore Schwann", "Mathias Schleiden", "Robert Brown"], correct: 2, explanation: "Mathias Schleiden stated that all plants are made up of cells and its products."},
+        {question: "Reserve materials in prokaryotic cells are:", options: ["Only found in blue and green bacteria", "Stored in the form of inclusion bodies and are not bound by any membrane", "Similar/analogous to gas vacuoles in plants", "Mostly found in plants and store starch"], correct: 1, explanation: "Reserve materials in prokaryotic cells are stored in the form of inclusion bodies and are not bound by any membrane. Gas vacuoles are found in blue and green bacteria, not inclusion bodies."},
+        {question: "Assertion and Reason — choose the correct option:\n(A) All living organisms are made up of cells and its products.\n(R) Rudolf Virchow first concluded that all cells arise from pre-existing cells (Omnis cellula-e-cellula) by the process of binary fission.", options: ["Both statements are correct and (R) correctly explains (A)", "Both statements are correct but (R) doesn't explain (A)", "(A) is true but (R) is false", "(A) is false but (R) is true"], correct: 2, explanation: "(A) is true but (R) is false. Rudolf Virchow did conclude that all cells arise from pre-existing cells, however cells do not use binary fission — they use mitosis or meiosis."},
+        {question: "Bacteria can be classified on the basis of differences in the?", options: ["Cell wall", "Plasma membrane", "Nuclear membrane", "Cell envelope"], correct: 3, explanation: "Bacteria are classified on the basis of differences in the cell envelope."},
+        {question: "Which of the following is NOT a function of the mesosome?", options: ["Respiration", "Increasing the enzymatic contents", "Cell wall formation", "Locomotion"], correct: 3, explanation: "Locomotion is not a function of the mesosome. Mesosomes help in respiration, increasing enzymatic content, and cell wall formation. Locomotion is carried out by flagella."},
+        {question: "Assertion and Reason — choose the correct option:\n(A) Bacterial cells may be motile or non-motile.\n(R) The bacterial motility depends on the presence or absence of flagella.", options: ["Both statements are true and (R) explains (A) correctly", "Both statements are true but (R) doesn't explain (A) correctly", "(A) is true but (R) is false", "Both (A) and (R) are false"], correct: 0, explanation: "Both statements are true and the reason correctly explains the assertion. Bacterial motility does depend on the presence or absence of flagella."},
+        {question: "Which of the following statements is correct?", options: ["Most prokaryotes have a simple cell envelope", "The cell wall in bacteria can help in interaction with the outside world", "The cell envelope is tightly bound where the outermost is cell wall followed by glycocalyx and cell membrane as the innermost layer", "Each layer of the cell envelope performs distinct functions but act together as a protective unit"], correct: 3, explanation: "Each layer of the cell envelope performs distinct functions but acts together as a protective unit. Most prokaryotes have a complex, not simple, cell envelope. The glycocalyx is the outermost layer, followed by the cell wall, then the cell membrane."},
+        {question: "Which of the following regarding the cytoplasm is false?", options: ["It is present in both eukaryotes and prokaryotes", "It is also called the main arena of cellular activities", "It is also found in both plants and animals", "Ribosomes are only found in the cytoplasm"], correct: 3, explanation: "Ribosomes are not only found in the cytoplasm — they are also found within the mitochondria, chloroplasts, and on the rough ER."},
+        {question: "Which of the following is different in prokaryotes and eukaryotes?", options: ["Cytoplasm", "70S ribosomes", "Rate of replication", "Genetic material"], correct: 2, explanation: "The rate of replication is different — prokaryotes multiply more rapidly compared to eukaryotes. Both can have 70S ribosomes (prokaryotes always; eukaryotes in organelles). Both have genetic material and cytoplasm."},
+        {question: "Which of the following cells played a major role in understanding the structure of the plasma membrane when electron microscopes were discovered in 1950?", options: ["Red blood cells", "Neurons", "Most eukaryotic cells", "Columnar epithelial cells"], correct: 0, explanation: "Red blood cells played a major role in understanding the structure of the plasma membrane."},
+        {question: "How are lipids arranged in the cell membrane?", options: ["The head is polar and present on the outer side, while the tail is hydrophilic and present on the inner side", "The head is non-polar and present on the outer side, while the tail is hydrophobic and present on the inner side", "The head is polar and present on the inner side, while the tail is hydrophobic and present on the outer side", "The head is polar and present towards the outer side, while the tail is hydrophobic and present towards the inner side"], correct: 3, explanation: "The polar heads of lipids face outward (towards the aqueous environment) and the hydrophobic tails face inward."},
+        {question: "How are proteins classified in the cell membrane?", options: ["On the basis of ease of extraction", "On the presence or absence of a phosphate group", "On the shape", "Depending on their mass"], correct: 0, explanation: "Proteins in the cell membrane are classified on the basis of ease of extraction — giving rise to peripheral and integral proteins."},
+        {question: "Fluidity can also be called:", options: ["The quality of proteins inside the cell membrane", "The semi-permeable nature of the cell membrane", "The ability to move within the membrane", "The hydrophobic nature of the lipids"], correct: 2, explanation: "Fluidity refers to the ability of membrane components to move within the membrane."},
+        {question: "The fluid nature of the cell membrane does NOT help which of the following functions?\n(A) Cell growth\n(B) Secretion\n(C) Cell division\n(D) Formation of intercellular junctions\n(E) Respiration", options: ["(A), (B), (C) and (D)", "(B), (D) and (E)", "(C) and (D) only", "None of the above"], correct: 3, explanation: "The fluid nature of the cell membrane helps in ALL of these functions — cell growth, secretion, cell division, and formation of intercellular junctions. None of them are excluded."},
+        {question: "Which of the following is correct regarding polar molecules and their movement through the cell membrane?", options: ["They can move through the cell membrane by simple diffusion", "They can move through the cell membrane with the help of a carrier protein", "They cannot move through the cell membrane at all", "They can move through the cell membrane against the concentration gradient"], correct: 1, explanation: "Polar molecules require a carrier protein to move through the cell membrane. Simple diffusion is for neutral solutes. Moving against the concentration gradient applies to ions."},
+        {question: "The middle lamella is mainly composed of?", options: ["Calcium pectate", "Magnesium pectate", "Chitin", "Hemicellulose"], correct: 0, explanation: "The middle lamella is mainly composed of calcium pectate, which helps in holding adjacent cells together."},
+        {question: "Which of the following is true about the cell wall?", options: ["The primary cell wall is present near the outer side of the matured cell", "The cell wall may be traversed by middle lamella which connects the nucleus of both cells", "The secondary cell wall is present on the inner side towards the cell membrane", "Cell wall can help in infection and damage"], correct: 2, explanation: "The secondary cell wall is present on the inner side, towards the cell membrane. The primary cell wall is usually absent in matured cells. The middle lamella connects adjacent cells through the cytoplasm, not the nucleus. Cell wall provides protection against damage and infection, not cause it."},
+        {question: "Which of the following is NOT a part of the endomembrane system?", options: ["Lysosomes", "Mitochondria", "Vacuoles", "Golgi complex"], correct: 1, explanation: "Mitochondria are not a part of the endomembrane system because their functions are not coordinated with the ER, Golgi, lysosomes, and vacuoles that form the endomembrane system."},
+        {question: "The ER divides the intracellular space into 2 parts mainly called as:", options: ["Intraluminal (inside ER) and luminal (outside ER)", "Luminal (inside ER) and intraluminal (outside ER)", "Luminal (inside ER) and extraluminal (outside ER)", "Intraluminal (inside ER) and extraluminal (outside ER)"], correct: 2, explanation: "The ER divides the intracellular space into luminal (inside the ER) and extraluminal (outside the ER) compartments."},
+        {question: "Which of the following is the site for lipid synthesis?", options: ["RER", "Ribosome", "SER", "Nucleus"], correct: 2, explanation: "The Smooth Endoplasmic Reticulum (SER) is the site for lipid synthesis."},
+        {question: "Which of the following is incorrect regarding Golgi bodies?", options: ["They are spherical in shape", "The cisternae of Golgi bodies are stacked parallel to each other", "The cis and trans face function very differently", "The vesicles fuse with cis face and move towards the trans face or the maturing face"], correct: 0, explanation: "Golgi bodies are disc-shaped, not spherical."},
+        {question: "Lysosomes are rich in many hydrolytic enzymes. Which of the following is NOT present in a lysosome?", options: ["Lipase", "Nucleases", "Proteases", "HCl"], correct: 3, explanation: "HCl is not present in lysosomes. Lysosomes contain hydrolytic enzymes like lipases, proteases, and nucleases (capable of digesting nucleic acids)."},
+        {question: "Which of the following statements is incorrect regarding vacuoles?", options: ["Concentration gradient is higher in cytoplasm compared to vacuoles", "Contractile vacuole helps in osmoregulation in Amoeba", "Vacuoles contain mainly useless products of the cell", "Tonoplast facilitates the transport of a number of ions into the vacuole"], correct: 0, explanation: "The concentration gradient is actually higher in vacuoles compared to the cytoplasm, not the other way around."},
+        {question: "Which of the following cannot be the shape of mitochondria?", options: ["Rod shaped", "Cylindrical", "Sausage shaped", "Bean shaped"], correct: 3, explanation: "Mitochondria can be cylindrical, rod-shaped, or sausage-shaped but NOT bean-shaped. Bean shape is not a described shape of mitochondria."},
+        {question: "Which of the following is incorrect regarding the mitochondria?", options: ["They contain multiple infoldings called cristae", "The two membranes contain their own enzymes with similar or different functions", "They contain double circular DNA molecule and a few RNA molecules", "They mostly divide by binary fission"], correct: 2, explanation: "Mitochondria contain a single circular DNA molecule, not double. They do contain a few RNA molecules, and do divide by binary fission."},
+        {question: "Plastids are found in which of the following?", options: ["Plants only", "Euglenoids only", "Both plants and euglenoids", "Animals"], correct: 2, explanation: "Plastids are found in both plants and euglenoids."},
+        {question: "Match the following correctly: (i) Chromoplast, (ii) Aleuroplast, (iii) Elaioplast, (iv) Amyloplast — (a) Oil and fats, (b) Pigments, (c) Proteins, (d) Starch", options: ["(i)-(b), (ii)-(c), (iii)-(d), (iv)-(a)", "(i)-(b), (ii)-(c), (iii)-(a), (iv)-(d)", "(i)-(c), (ii)-(b), (iii)-(d), (iv)-(d)", "(i)-(b), (ii)-(a), (iii)-(c), (iv)-(d)"], correct: 1, explanation: "Chromoplast stores pigments, Aleuroplast stores proteins, Elaioplast stores oils and fats, Amyloplast stores starch."},
+        {question: "The length of chloroplast in micrometers is:", options: ["6–8", "7–11", "0.6–1.2", "5–10"], correct: 3, explanation: "The length of chloroplast is 5–10 micrometers."},
+        {question: "Which of the following regarding the chloroplast is incorrect?", options: ["They contain their own double stranded DNA", "Stroma of chloroplast can help in the synthesis of carbohydrates and proteins", "Chloroplasts usually have slightly smaller ribosomes compared to the cytoplasm", "The number of chloroplasts varies from 1–50 depending on the type of cell"], correct: 3, explanation: "The number of chloroplasts varies from 1–40 per cell, not 1–50."},
+        {question: "Ribosomes were first discovered by?", options: ["Camillo Golgi", "Mendel", "George Palade", "Flemming"], correct: 2, explanation: "Ribosomes were first discovered by George Palade."},
+        {question: "Cytoskeleton is made up of?", options: ["Protein", "Ribosomes", "Chitin", "Tubulin proteins"], correct: 0, explanation: "The cytoskeleton is made up of protein filaments."},
+        {question: "Which of the following regarding cilia and flagella is incorrect?", options: ["Cilia are small structures which work like oars", "Flagella is similar in structure in eukaryotes and prokaryotes", "They both have a core called axoneme which possesses a number of microtubules", "Both share a common origin"], correct: 1, explanation: "Flagella in eukaryotes and prokaryotes are structurally different. The eukaryotic flagellum has a 9+2 arrangement of microtubules, whereas prokaryotic flagella are made of flagellin protein."},
+        {question: "Which of the following have a cartwheel-like organisation?", options: ["Centrosome", "Centrioles", "Both centrosome and centrioles", "Cilia and flagella"], correct: 1, explanation: "Centrioles have a cartwheel-like organisation. Centrioles are the structural components found within the centrosome."},
+        {question: "Nucleus was first discovered by?", options: ["Robert Hooke", "Flemming", "Robert Brown", "George Palade"], correct: 2, explanation: "The nucleus was first discovered by Robert Brown."},
+        {question: "The perinuclear space measured in nanometers is around:", options: ["10–20", "25–100", "50–100", "10–50"], correct: 3, explanation: "The perinuclear space is approximately 10–50 nm."},
+        {question: "Nuclear pores present in the nucleus provide passage for which materials?", options: ["RNA and DNA", "Chromosomes and RNA", "Proteins and RNA", "DNA and proteins"], correct: 2, explanation: "Nuclear pores provide passage for proteins (moving into the nucleus) and RNA (moving out of the nucleus)."},
+        {question: "Which of the following is NOT true regarding the nucleolus?", options: ["Larger and more numerous nucleoli are present in cells which carry out protein synthesis", "They are spherical in shape", "They are usually single membrane bound organelles", "It is an active site for RNA synthesis"], correct: 3, explanation: "The nucleolus is an active site for RNA synthesis (ribosomal RNA). It is NOT membrane bound — option 3 is incorrect."},
+        {question: "Chromosomes are differentiated on the basis of?", options: ["Position of kinetochore", "Position of centromere", "Type of proteins present in the chromosome", "Length of the DNA present in them"], correct: 1, explanation: "Chromosomes are differentiated on the basis of the position of the centromere."},
+        {question: "Microbodies are:", options: ["Double membrane bound minute vesicles present in animal cells", "Not bounded by any membrane and contain enzymes", "Specifically found in plant cells", "Minute membrane bound vesicles present in both plants and animals and contain various enzymes"], correct: 3, explanation: "Microbodies are minute membrane bound vesicles present in both plant and animal cells and contain various enzymes."},
+        {question: "The basal body of cilia and flagella is formed by?", options: ["Microtubules", "Cytoskeleton", "Ribosome", "Centrosome and centriole"], correct: 3, explanation: "The basal body of cilia and flagella is formed by the centrosome and centriole."},
+        {question: "What percent of proteins and lipids are present in the plasma membrane?", options: ["52% protein, 48% lipids", "52% lipid, 48% proteins", "52% protein, 40% lipids", "52% lipids and 40% proteins"], correct: 2, explanation: "The plasma membrane is composed of approximately 52% protein and 40% lipids."},
+        {question: "Which of the following is one of the longest cells?", options: ["Nerve cells", "Neurons", "Columnar cells", "Blood cells"], correct: 0, explanation: "Nerve cells (also known as neurons) are one of the longest cells in the body."},
+        {question: "What is the length of the smallest cell in micrometers?", options: ["3", "0.03", "0.5", "0.3"], correct: 3, explanation: "The smallest cells are approximately 0.3 micrometers in length (PPLO – Pleuro Pneumonia Like Organisms)."},
+        {question: "Why is the cell considered the unit of all living organisms?", options: ["Because the first living organisms were prokaryotes", "Without a cell there is no life", "Anything less than one single cell doesn't ensure independent living", "Cells divide by meiosis"], correct: 2, explanation: "The cell is considered the unit of life because anything less than one single cell cannot ensure independent living."},
+        {question: "The smallest living organisms are?", options: ["PPLO", "Bacterial cells", "Viruses", "Parasites"], correct: 0, explanation: "The smallest living organisms are PPLO (Pleuro Pneumonia Like Organisms), also known as Mycoplasma."},
+        {question: "Which of the following shapes is NOT a shape of a cell?", options: ["Cubical", "Cup shaped", "Irregular", "Polygonal"], correct: 1, explanation: "Cells can be disc-shaped, not cup-shaped. RBCs for example are biconcave disc-shaped. Cup-shaped is not a described shape of animal or plant cells."},
+        {question: "The antibiotic resistance of bacteria is due to?", options: ["Tough glycocalyx layer", "Plasmid", "Rigid cell wall", "Random mutation"], correct: 1, explanation: "Antibiotic resistance in bacteria is due to plasmids, which carry resistance genes."}
     ],
     cell_cycle: [],
-    biomolecules: [],
+    biomolecules: [
+        {question: "If we take a living tissue and grind it in a particular compound with the help of a mortar and pestle we will obtain a thick slurry. Which of the following compounds can we add to obtain that particular thick slurry?", options: ["Benzoic acid", "Acetophenone", "Trichloro-benzoic acid", "Trichloroacetic acid"], correct: 3, explanation: "Trichloroacetic acid is used to obtain a thick slurry when grinding living tissue. (NCERT page 104)"},
+        {question: "When a tissue is fully burnt, there are some remaining compounds left in the cell called the ash. Which of the following compounds is NOT present in Ash?", options: ["Calcium", "Carbon dioxide", "Magnesium", "Phosphate"], correct: 1, explanation: "Carbon compounds are removed during the burning process. Only inorganic compounds remain as ash. (NCERT page 105)"},
+        {question: "Which of the following Amino acids is correctly matched?", options: ["Alanine - hydrogen group", "Serine - acidic amino acid", "Lysine - neutral amino acid", "Valine - Neutral amino acid"], correct: 3, explanation: "Valine is a neutral amino acid with a non-polar R group. (NCERT page 106)"},
+        {question: "What is the range of number of carbons which could be the R group of a fatty acid?", options: ["2-19", "1-16", "16-20", "1-19"], correct: 3, explanation: "Fatty acids typically have 1-19 carbons in their R group. (NCERT page 106)"},
+        {question: "Fats and oils are differentiated on the basis of?", options: ["Melting point", "Boiling point", "Saturated or unsaturated structure", "R group"], correct: 0, explanation: "Fats and oils are differentiated on the basis of their melting point. (NCERT page 106)"},
+        {question: "Which of the following statements is true?", options: ["Fatty acids are usually bonded with glycerol with the help of hydrogen bonding", "Lectin is an example of simple lipid", "Adenosine, guanosine, thymidine, uridine and cytidine are nucleotides", "Arachidonic acid has 20 carbon atoms including the carboxyl carbon"], correct: 3, explanation: "Arachidonic acid has 20 carbon atoms including the carboxyl carbon. Fatty acids bond with glycerol via ester bonds, not hydrogen bonds. Adenosine, guanosine, etc. are nucleosides, not nucleotides. (NCERT page 106)"},
+        {question: "Which of the following is NOT a secondary metabolite?\n(A) Scents\n(B) Gums\n(C) Antibiotics\n(D) Spices\n(E) Rubber", options: ["(A), (B) and (E)", "(B), (C) and (D)", "(C) and (D) only", "None of the above"], correct: 3, explanation: "All listed items are secondary metabolites. (NCERT page 108)"},
+        {question: "Biomolecules found inside the living organisms are of 2 types. What is the basis behind this classification?", options: ["They are based on Inorganic and organic compounds", "Based on different molecular weights", "They are based on percentage composition in the surrounding", "They are based on the solubility or insolubility of the compounds in water"], correct: 1, explanation: "Biomolecules are classified based on their different molecular weights. (NCERT page 108)"},
+        {question: "Which of the following is the correct descending order of their percentage in the total cellular mass?", options: ["Water > Carbohydrates > proteins > nucleic acids > lipids > Ions", "Water > Nucleic acids > proteins > carbohydrates > lipids > Ions", "Water > Proteins > Nucleic acids > carbohydrates > lipids > Ions", "Nucleic acid > Water > Proteins > Carbohydrates > Lipids > Ions"], correct: 2, explanation: "The correct order is Water > Proteins > Nucleic acids > carbohydrates > lipids > Ions. (NCERT page 109, Table 9.4)"},
+        {question: "Which of the following is NOT an Amino Acid?", options: ["Proline", "Tryptophan", "Trypsin", "Lysine"], correct: 2, explanation: "Trypsin is an enzyme, not an amino acid. (NCERT page 109)"},
+        {question: "Which of the following is Correct regarding the Protein?", options: ["Collagen is the most abundant protein in the animal world", "The structure of protein is a homopolymer and not heteropolymer", "Collagen is the most abundant protein in the whole World", "Collagen is an Intracellular Protein"], correct: 0, explanation: "Collagen is the most abundant protein in the animal world and is an Intercellular protein (not Intracellular). Proteins are heteropolymers. (NCERT page 109)"},
+        {question: "Which of the following is NOT performed by a protein?", options: ["Transport", "Fighting infections", "Making glycogen", "Receptor"], correct: 2, explanation: "Proteins don't directly make glycogen; they help make insulin. Proteins do transport, fight infections, and act as receptors. (NCERT page 105, Table 9.5)"},
+        {question: "Which of the following statements is incorrect?", options: ["Cellulose is a homopolymer", "The acid soluble pellet also has polysaccharides", "Starch and glycogen are variants of cellulose", "Inulin is a polymer of fructose"], correct: 1, explanation: "The acid INSOLUBLE pellet has polysaccharides, not the soluble pellet. (NCERT page 110)"},
+        {question: "Which of the following is incorrect?", options: ["Some examples of chemically modified sugar are called glucosamine, N-acetyl galactosamine", "The complex polysaccharides are mostly heteropolymers", "Exoskeleton of many insects might contain a complex polysaccharide", "Cellulose can help in forming paper"], correct: 1, explanation: "Complex polysaccharides are mostly homopolymers, not heteropolymers. (NCERT page 111)"},
+        {question: "Which of the following regarding the Nucleic Acid is True?", options: ["They come under the acid soluble fraction of a living tissue", "Nucleotide contain a heterocyclic compound, a disaccharide and a phosphoric acid or phosphate group", "The skeleton homocyclic ring is called purine and pyrimidine", "The sugar ribose or deoxyribose is usually found on the 2' position"], correct: 3, explanation: "The ribose or deoxyribose is found at the 2' position. Nucleic acids are in the acid insoluble fraction. Nucleotides contain monosaccharides, not disaccharides. The skeleton contains heterocyclic rings. (NCERT page 111)"},
+        {question: "The three dimensional structure of protein is given by?", options: ["Chemists", "Biologists", "Physicists", "Mathematicians"], correct: 2, explanation: "Physicists determined the 3D structure of proteins. Chemists give 2D views; biologists give 4-level structural analysis. (NCERT page 111)"},
+        {question: "Prosthetic Groups are?", options: ["Inorganic compounds and are tightly bound to the apoenzyme", "Organic compounds but are lightly bound to the apoenzyme", "Organic compounds but are tightly bound to the apoenzyme", "Inorganic compounds but are lightly bound to the apoenzyme"], correct: 2, explanation: "Prosthetic groups are organic compounds that are tightly bound to the apoenzyme. (NCERT page 118)"},
+        {question: "For peroxidase and catalase the prosthetic group is?", options: ["Zinc", "Haem", "NAD", "Niacin"], correct: 1, explanation: "The prosthetic group for peroxidase and catalase is haem. (NCERT page 118)"},
+        {question: "Which of the following is not an essential chemical component of Co enzymes?", options: ["Niacin", "Na+", "NAD", "Vitamins"], correct: 1, explanation: "Na+ is not an essential component of coenzymes. Niacin, NAD, and vitamins are essential components. (NCERT page 118)"},
+        {question: "What happens when co-factor is removed from the enzyme?", options: ["The rate of reaction slows down", "The reaction stops totally", "The catalytic activity is lost", "No change occurs in the reaction at all"], correct: 2, explanation: "When a cofactor is removed, the catalytic activity of the enzyme is lost. (NCERT page 118)"},
+        {question: "Which of the following linking is not done by ligases?", options: ["C-C", "C-N", "P-O", "C-S"], correct: 0, explanation: "Ligases do not form C-C bonds. They form C-N, P-O, and C-S bonds. (NCERT page 117)"},
+        {question: "Which of the following is not catalysed by the Hydrolases?", options: ["Ester bond", "Ether", "Hydrogen bond", "P-N bonds"], correct: 2, explanation: "Hydrolases catalyze ester bonds, ethers, and P-N bonds, but NOT hydrogen bonds. (NCERT page 117)"},
+        {question: "Enzymes are divided into?", options: ["4-13 classes and 6 sub classes", "6 classes and 4-13 sub classes", "7 classes and 5-14 sub classes", "7 classes and 7-14 sub classes"], correct: 1, explanation: "Enzymes are divided into 6 main classes with 4-13 sub classes. (NCERT page 117)"},
+        {question: "Which of the following doesn't affect the activity of most enzymes?", options: ["Acidic pH", "Substrate concentration", "Optimum temperature", "Change in binding site"], correct: 2, explanation: "Optimum temperature doesn't negatively affect enzyme activity; enzymes work best at their optimum temperature. (Related to NCERT page 114)"},
+        {question: "The first step of catalytic cycle of enzyme is?", options: ["Binding of substrate", "Change in shape of the enzyme making it suitable for binding", "The binding site of the enzyme becoming active", "Break down of the enzyme-product complex"], correct: 0, explanation: "The first step is the binding of the substrate to the enzyme. (NCERT page 115)"},
+        {question: "Glucose becomes pyruvate with how many enzyme catalysed reactions?", options: ["9", "11", "12", "10"], correct: 3, explanation: "Glucose is converted to pyruvate through 10 enzyme-catalyzed reactions (glycolysis). (NCERT page 114)"},
+        {question: "The enzyme accelerates the reaction rate by around?", options: ["1 million times", "1 billion times", "10 billion times", "10 million times"], correct: 3, explanation: "Enzymes accelerate reaction rates by approximately 10 million times. (NCERT page 114)"},
+        {question: "Hydrolysis of starch into glucose is?", options: ["Organic physio-chemical reaction", "Inorganic physiological reaction", "Organic physiological reaction", "Organic chemical reaction"], correct: 3, explanation: "Hydrolysis of starch into glucose is an organic chemical reaction. (NCERT page 113)"},
+        {question: "Which of the following is the difference between organic and inorganic enzymes?", options: ["Inorganic enzymes slow down the reaction rate, while organic reaction increases the reaction rate", "Inorganic catalysts can work better in high pressure and temperature while organic enzymes get denatured mostly", "Organic enzymes require an active site but inorganic enzymes can work without the presence of an active site", "An organic enzyme is less available compared to inorganic compounds"], correct: 1, explanation: "Inorganic catalysts work better at high pressure and temperature, while organic enzymes get denatured under such conditions. (NCERT page 113)"},
+        {question: "The hollow woolen ball is achieved by the protein in which structure?", options: ["Tertiary", "Quaternary", "Secondary", "Primary"], correct: 2, explanation: "The hollow woolen ball-like structure is achieved in the secondary structure of proteins. (NCERT page 112)"},
+        {question: "Which of the following is the correct statement regarding proteins?", options: ["The first amino acid is called as the C terminal and The last terminal as the N terminal", "The protein exists as helix in the most part", "A protein is imagined as a thick rod like structure", "Proteins only have right handed helix"], correct: 3, explanation: "Proteins have right-handed helices. The first amino acid is the N terminal and the last is C terminal. Proteins are mostly thread-like with some helical regions. (NCERT page 111-112)"},
+        {question: "Which of the following is the correct difference between starch and cellulose?", options: ["Cellulose doesn't contain complex helices and hence cannot hold I2 while starch can", "Starch is a variant of cellulose", "Starch contain branches while cellulose doesn't", "Cellulose is a homopolymer while starch is a heteropolymer"], correct: 0, explanation: "Cellulose lacks the helical structure of starch and cannot hold I2, giving it blue color. (NCERT page 110)"},
+        {question: "Which of the following is incorrect regarding lipids?", options: ["Lipids are polymeric substances", "Lipids are not strictly macromolecules", "Their weight ranges from 18-800 daltons", "Lipid is a glycerol"], correct: 0, explanation: "Lipids are NOT polymeric substances; they are not made of repeating subunits. (NCERT page 109)"},
+        {question: "Which of the following is not a polymeric substance?", options: ["Anthocyanin", "Gums", "Cellulose", "Rubber"], correct: 0, explanation: "Anthocyanin is not a polymeric substance. Gums, cellulose, and rubber are all polymers. (NCERT page 108, Table 9.3)"},
+        {question: "Which of the following tissue have complex lipids?", options: ["Nerve", "Adipose", "Every tissue in the human body", "Neural"], correct: 3, explanation: "Neural tissue has complex lipids. (NCERT page 106)"},
+        {question: "Which of the following is an aromatic amino acid?", options: ["Alanine", "Tyrosine", "Trypsin", "Serine"], correct: 1, explanation: "Tyrosine is an aromatic amino acid containing a benzene ring in its R group. (NCERT page 106)"},
+        {question: "Which of the following is not the part of the substituent group?", options: ["Phosphate", "Hydroxyl group", "Carbonyl group", "Methyl group"], correct: 0, explanation: "Phosphate is not part of the substituent group in amino acids. Hydroxyl, carbonyl, and methyl groups are. (NCERT page 105)"},
+        {question: "Which of the following compounds is present in the highest amount in the human body?", options: ["Carbon", "Nitrogen", "Hydrogen", "Water"], correct: 3, explanation: "Water is present in the highest amount in the human body. (NCERT page 105, Table 9.1)"},
+        {question: "Which of the following has a low melting point?", options: ["Arachidonic acid", "Palmitic acid", "Gingelly oil", "Lecithin"], correct: 2, explanation: "Gingelly oil (unsaturated fat) has a low melting point compared to saturated fats. (NCERT page 106)"},
+        {question: "Which of the following is not a nitrogenous base?", options: ["Uridine", "Adenine", "Thymine", "Guanine"], correct: 0, explanation: "Uridine is a nucleoside, not a nitrogenous base. Adenine, thymine, and guanine are nitrogenous bases. (NCERT page 106)"},
+        {question: "Assertion - Amino acids contain a particular property known as the ionizable nature\nReason - The ionizable nature of Amino acids allows amino acids to have different structure depending on the pH", options: ["Both (A) and (R) are true and (R) is the correct explanation of (A)", "Both (A) and (R) are true but (R) is not the correct explanation of (A)", "(A) is true but (R) is false", "Both (A) and (R) are false"], correct: 0, explanation: "Both statements are true and the ionizable nature correctly explains why amino acids have different structures at different pH values. (NCERT page 106)"},
+        {question: "Which of the following is matched incorrectly regarding lipids?", options: ["Simple lipid - glycerol", "Phospholipid - lecithin", "Complex lipid - neural tissue", "Arachidonic acid - 19 carbons including the carboxylic group"], correct: 3, explanation: "Arachidonic acid has 20 carbons including the carboxylic group, not 19. (NCERT page 106)"},
+        {question: "Nucleic acids like RNA and DNA contain?", options: ["Nucleoside only", "Nucleotide only", "Nucleotide + nitrogenous base + phosphate", "Nitrogenous base + sugar + phosphate"], correct: 1, explanation: "RNA and DNA are composed of nucleotides, which already include the nitrogenous base, sugar, and phosphate. (NCERT page 106)"},
+        {question: "Which of the following compounds has their R group has hydroxyl methyl?", options: ["Glycine", "Serine", "Valine", "Alanine"], correct: 1, explanation: "Serine has a hydroxymethyl (-CH2OH) R group. Glycine has H, valine has branched alkyl, alanine has methyl. (NCERT page 106)"},
+        {question: "Assertion - Amino acids can be classified on the basis of two types mainly essential and non essential\nReason - Essential amino acids can be Produced in our body, while non essential amino acids are present in our food/diet", options: ["Both (A) and (R) are true and (R) is the correct explanation of (A)", "Both (A) and (R) are true but (R) is not the correct explanation of (A)", "(A) is true but (R) is false", "(A) is false but (R) is true"], correct: 2, explanation: "(A) is true - amino acids are classified as essential and non-essential. (R) is false - essential amino acids are obtained from diet; non-essential are synthesized in the body."},
+        {question: "Assertion - Starch can form complex helical tertiary structure\nReason - Starch can hold I2 molecules giving it a blue colour", options: ["Both (A) and (R) are true and (R) is the correct explanation of (A)", "Both (A) and (R) are true but (R) is not the correct explanation of (A)", "(A) is true but (R) is false", "(A) is false but (R) is true"], correct: 3, explanation: "(A) is false - starch forms SECONDARY structure helices, not tertiary. (R) is true - starch can hold I2 and give blue color. (NCERT page 110)"},
+        {question: "Which of the following is correctly matched?", options: ["Inulin - hormone", "GLUT-4 - transports glycogen into cells", "Collagen - Intercellular ground substance", "Tyrosine - Enzyme"], correct: 2, explanation: "Collagen is correctly matched as an intercellular ground substance. (NCERT page 109, Table 9.5)"},
+        {question: "Which of the following regarding polysaccharides is wrong?", options: ["Chitin is nitrogen containing complex polysaccharide", "Inulin is a polymer of glucose", "Polysaccharide containing one monosaccharide is glucose", "The right end of the polysaccharide is the Reducing end, while the left end is non reducing"], correct: 1, explanation: "Inulin is a polymer of FRUCTOSE, not glucose. (NCERT page 110)"},
+        {question: "The architecture of Quaternary protein is?", options: ["The arrangement of 3-D hollow woolen ball like structure", "The arrangement of the linear chain of protein", "The arrangement of folded polypeptides with respect to each other", "The arrangement of protein in a revolving staircase like structure"], correct: 2, explanation: "Quaternary structure describes the spatial arrangement of multiple folded polypeptide chains in relation to each other. (NCERT page 112)"},
+        {question: "Enzymes catalysing a transfer of a group (Other than hydrogen) are called?", options: ["Lyases", "Dehydrogenases", "Isomerase", "Transferase"], correct: 3, explanation: "Transferases catalyze the transfer of functional groups (other than hydrogen) from one molecule to another. (NCERT page 117)"}
+    ],
     photosynthesis: [],
     respiration_plants: [],
     plant_growth: [],
@@ -996,7 +621,28 @@ const questionBank = {
     biotech_applications: [],
     organisms_population: [],
     ecosystem: [],
-    biodiversity: []
+    biodiversity: [],
+    // CHEMISTRY
+    mole_concept: [],
+    atomic_structure: [],
+    thermodynamics: [],
+    redox_reactions: [],
+    equilibrium: [],
+    solutions: [],
+    chemical_kinetics: [],
+    electrochemistry: [],
+    periodic_table: [],
+    chemical_bonding: [],
+    d_f_block: [],
+    coordination_compounds: [],
+    goc: [],
+    hydrocarbons: [],
+    haloalkanes_haloarenes: [],
+    alcohols_phenols_ethers: [],
+    aldehydes_ketones_carboxylic: [],
+    amines: [],
+    biomolecules_chem: [],
+    qualitative_quantitative: []
 };
 
 // ================================================================
@@ -1007,18 +653,16 @@ let currentQIndex = 0, score = 0, correct = 0, incorrect = 0, unanswered = 0;
 let selectedAns = null, answered = false;
 let timerInterval = null, timeRemaining = 0;
 let questionCount = 25, timerMinutes = 30;
-
-// Per-question timer
 let qTimerInterval = null;
 let qTimeSpent = 0;
 let qTimerMax = 120;
 let qTimePaused = false;
 let questionTimes = [];
-let questionStatus = []; // 'unanswered' | 'correct' | 'incorrect' | 'reviewing'
-let userAnswers = [];    // stores which option index the user picked (-1 = unanswered)
+let questionStatus = [];
+let userAnswers = [];
 
 // ================================================================
-// GLOBAL TIMER
+// TIMER FUNCTIONS
 // ================================================================
 function stopTimer() {
     if (timerInterval !== null) { clearInterval(timerInterval); timerInterval = null; }
@@ -1027,6 +671,7 @@ function stopTimer() {
 function startTimer() {
     stopTimer();
     updateTimerDisplay();
+    if (timeRemaining === Infinity) return; // No timer
     timerInterval = setInterval(() => {
         timeRemaining--;
         updateTimerDisplay();
@@ -1039,14 +684,15 @@ function startTimer() {
 }
 
 function updateTimerDisplay() {
+    if (timeRemaining === Infinity) {
+        document.getElementById('timeLeft').textContent = '∞ (No Limit)';
+        return;
+    }
     const m = Math.floor(timeRemaining / 60);
     const s = timeRemaining % 60;
     document.getElementById('timeLeft').textContent = `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-// ================================================================
-// PER-QUESTION TIMER
-// ================================================================
 function stopQTimer() {
     if (qTimerInterval !== null) { clearInterval(qTimerInterval); qTimerInterval = null; }
 }
@@ -1062,14 +708,14 @@ function startQTimer() {
 
 function pauseQTimer() {
     qTimePaused = true;
-    stopTimer(); // pause global timer while reading explanation
+    stopTimer();
     document.getElementById('pausedBanner').classList.remove('hidden');
 }
 
 function resumeQTimer() {
     qTimePaused = false;
     document.getElementById('pausedBanner').classList.add('hidden');
-    startTimer(); // resume global timer
+    startTimer();
 }
 
 function updateQTimerDisplay() {
@@ -1087,7 +733,7 @@ function saveQTime() {
 // ================================================================
 // PAGE MANAGEMENT
 // ================================================================
-const allPages = ['homePage','chapterPage','controlsPage','customBuilderPage','quizPage','resultsPage'];
+const allPages = ['homePage','topicPage','chapterPage','controlsPage','customBuilderPage','quizPage','resultsPage'];
 
 function showPage(pageId) {
     allPages.forEach(id => document.getElementById(id).classList.add('hidden'));
@@ -1095,12 +741,78 @@ function showPage(pageId) {
 }
 
 function backToHome() { stopTimer(); stopQTimer(); showPage('homePage'); }
+function backToTopics() { stopTimer(); stopQTimer(); showPage('topicPage'); }
 function backToChapters() { stopTimer(); stopQTimer(); showPage('chapterPage'); }
+
+// ================================================================
+// TOPIC SELECTION (Biology or Chemistry)
+// ================================================================
+function showSubjectTopics(subject) {
+    let topicList = [];
+    let title = '';
+    
+    if (subject === 'biology') {
+        title = '🧬 Biology Topics';
+        topicList = [
+            {key: 'diversity', name: 'Diversity in Living World', icon: '🌍', desc: '4 Chapters'},
+            {key: 'structural', name: 'Structural Organisation', icon: '🔬', desc: '3 Chapters'},
+            {key: 'cell', name: 'Cell Structure & Function', icon: '🧫', desc: '3 Chapters'},
+            {key: 'plant_physiology', name: 'Plant Physiology', icon: '🌱', desc: '3 Chapters'},
+            {key: 'human_physiology', name: 'Human Physiology', icon: '🫀', desc: '6 Chapters'},
+            {key: 'reproduction', name: 'Reproduction', icon: '🌸', desc: '3 Chapters'},
+            {key: 'genetics', name: 'Genetics & Evolution', icon: '🧬', desc: '3 Chapters'},
+            {key: 'welfare', name: 'Biology & Human Welfare', icon: '🏥', desc: '2 Chapters'},
+            {key: 'biotech', name: 'Biotechnology', icon: '⚗️', desc: '2 Chapters'},
+            {key: 'ecology', name: 'Ecology', icon: '🌿', desc: '3 Chapters'}
+        ];
+    } else if (subject === 'chemistry') {
+        title = '⚗️ Chemistry Topics';
+        topicList = [
+            {key: 'physical_chemistry', name: 'Physical Chemistry', icon: '🌡️', desc: '8 Chapters'},
+            {key: 'inorganic_chemistry', name: 'Inorganic Chemistry', icon: '⚛️', desc: '4 Chapters'},
+            {key: 'organic_chemistry', name: 'Organic Chemistry', icon: '🔬', desc: '8 Chapters'}
+        ];
+    }
+    
+    document.getElementById('topicPageTitle').textContent = title;
+    const grid = document.getElementById('topicPageGrid');
+    grid.innerHTML = '';
+    
+    const colorMap = {
+        diversity: 'topic-diversity',
+        structural: 'topic-structural',
+        cell: 'topic-cell',
+        plant_physiology: 'topic-plant-phys',
+        human_physiology: 'topic-human-phys',
+        reproduction: 'topic-reproduction',
+        genetics: 'topic-genetics',
+        welfare: 'topic-welfare',
+        biotech: 'topic-biotech',
+        ecology: 'topic-ecology',
+        physical_chemistry: 'topic-physical-chem',
+        inorganic_chemistry: 'topic-inorganic-chem',
+        organic_chemistry: 'topic-organic-chem'
+    };
+    
+    topicList.forEach(topic => {
+        const card = document.createElement('div');
+        card.className = `topic-card ${colorMap[topic.key]}`;
+        card.onclick = () => selectTopic(topic.key);
+        card.innerHTML = `
+            <div class="topic-icon">${topic.icon}</div>
+            <h3>${topic.name}</h3>
+            <p>${topic.desc}</p>
+        `;
+        grid.appendChild(card);
+    });
+    
+    showPage('topicPage');
+}
 
 // ================================================================
 // CHAPTER SELECTION
 // ================================================================
-function showChapters(topic) {
+function selectTopic(topic) {
     currentTopic = topic;
     const data = topicsData[topic];
     document.getElementById('chapterTitle').textContent = data.name;
@@ -1136,11 +848,13 @@ function selectChapter(chapterId, qCount) {
 function showCustomBuilder() {
     const container = document.getElementById('builderSections');
     container.innerHTML = '';
-    Object.keys(topicsData).forEach(topicKey => {
+    
+    // Biology Section
+    const bioSection = document.createElement('div');
+    bioSection.className = 'builder-section';
+    bioSection.innerHTML = '<h3>🧬 Biology</h3>';
+    ['diversity', 'structural', 'cell', 'plant_physiology', 'human_physiology', 'reproduction', 'genetics', 'welfare', 'biotech', 'ecology'].forEach(topicKey => {
         const topic = topicsData[topicKey];
-        const section = document.createElement('div');
-        section.className = 'builder-section';
-        section.innerHTML = `<h3>${topic.name}</h3>`;
         topic.chapters.forEach(ch => {
             const qCount = (questionBank[ch.id] || []).length;
             const wrap = document.createElement('div');
@@ -1153,10 +867,34 @@ function showCustomBuilder() {
                     if (!cb.disabled) cb.click();
                 }
             };
-            section.appendChild(wrap);
+            bioSection.appendChild(wrap);
         });
-        container.appendChild(section);
     });
+    container.appendChild(bioSection);
+    
+    // Chemistry Section
+    const chemSection = document.createElement('div');
+    chemSection.className = 'builder-section';
+    chemSection.innerHTML = '<h3>⚗️ Chemistry</h3>';
+    ['physical_chemistry', 'inorganic_chemistry', 'organic_chemistry'].forEach(topicKey => {
+        const topic = topicsData[topicKey];
+        topic.chapters.forEach(ch => {
+            const qCount = (questionBank[ch.id] || []).length;
+            const wrap = document.createElement('div');
+            wrap.className = 'chapter-checkbox';
+            wrap.innerHTML = `<input type="checkbox" id="cb_${ch.id}" ${qCount === 0 ? 'disabled' : ''}>
+                <label for="cb_${ch.id}">${ch.name} <span style="color:#94a3b8">(${qCount}Q)</span></label>`;
+            wrap.onclick = (e) => {
+                if (e.target.tagName !== 'INPUT') {
+                    const cb = document.getElementById(`cb_${ch.id}`);
+                    if (!cb.disabled) cb.click();
+                }
+            };
+            chemSection.appendChild(wrap);
+        });
+    });
+    container.appendChild(chemSection);
+    
     document.querySelectorAll('#builderSections input[type="checkbox"]').forEach(cb => {
         cb.addEventListener('change', updateCustomCount);
     });
@@ -1193,7 +931,8 @@ function updateCustomTimer() {
 // START QUIZ
 // ================================================================
 function startQuiz() {
-    timeRemaining = timerMinutes * 60;
+    const timerVal = parseInt(document.getElementById('timerSlider').value);
+    timeRemaining = timerVal === 0 ? Infinity : timerVal * 60;
     const pool = [...questionBank[currentChapter]].sort(() => Math.random() - 0.5).slice(0, questionCount);
     if (pool.length === 0) { alert('No questions available!'); return; }
     currentQuestions = pool;
@@ -1203,7 +942,8 @@ function startQuiz() {
 function startCustomTest() {
     const selected = Array.from(document.querySelectorAll('#builderSections input:checked')).map(cb => cb.id.replace('cb_', ''));
     const qPerChapter = parseInt(document.getElementById('customQuestionSlider').value);
-    timeRemaining = parseInt(document.getElementById('customTimerSlider').value) * 60;
+    const timerVal = parseInt(document.getElementById('customTimerSlider').value);
+    timeRemaining = timerVal === 0 ? Infinity : timerVal * 60;
     currentQuestions = [];
     selected.forEach(chId => {
         const pool = [...(questionBank[chId] || [])].sort(() => Math.random() - 0.5).slice(0, qPerChapter);
@@ -1359,13 +1099,12 @@ function submitAnswer() {
     document.getElementById('explanation').classList.remove('hidden');
     document.getElementById('submitBtn').classList.add('hidden');
     document.getElementById('nextBtn').classList.remove('hidden');
-    // Pause both timers while reading explanation
     pauseQTimer();
     updateReviewPanel();
 }
 
 function nextQuestion() {
-    resumeQTimer(); // restarts global timer
+    resumeQTimer();
     stopQTimer();
     currentQIndex++;
     if (currentQIndex < currentQuestions.length) loadQuestion();
@@ -1374,7 +1113,6 @@ function nextQuestion() {
 
 function prevQuestion() {
     saveQTime();
-    if (questionStatus[currentQIndex] === 'unanswered') questionStatus[currentQIndex] = 'unanswered';
     if (qTimePaused) resumeQTimer();
     currentQIndex--;
     if (questionStatus[currentQIndex] === 'unanswered') questionStatus[currentQIndex] = 'reviewing';
@@ -1401,11 +1139,6 @@ function showResults() {
         pct >= 70 ? '💪 Great Job!' :
         pct >= 50 ? '📚 Good Effort!' : '🎯 Keep Practicing!';
 
-    const answered_times = questionTimes.filter(t => t > 0);
-    const avgTime = answered_times.length > 0
-        ? Math.round(answered_times.reduce((a, b) => a + b, 0) / answered_times.length) : 0;
-    document.getElementById('avgTimeResult').textContent = avgTime + 's';
-
     const ctx = document.getElementById('resultsChart').getContext('2d');
     if (window.resultsChartObj) window.resultsChartObj.destroy();
     window.resultsChartObj = new Chart(ctx, {
@@ -1421,76 +1154,9 @@ function showResults() {
         },
         options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
     });
-
-    buildFullReview('all');
-}
-
-// ================================================================
-// FULL QUESTION REVIEW
-// ================================================================
-let currentReviewFilter = 'all';
-
-function buildFullReview(filter) {
-    currentReviewFilter = filter;
-
-    // Update active tab
-    ['filterAll','filterCorrect','filterIncorrect','filterUnanswered'].forEach(id => {
-        document.getElementById(id).classList.remove('active');
-    });
-    const map = { all: 'filterAll', correct: 'filterCorrect', incorrect: 'filterIncorrect', unanswered: 'filterUnanswered' };
-    document.getElementById(map[filter]).classList.add('active');
-
-    const container = document.getElementById('fullReviewContainer');
-    container.innerHTML = '';
-
-    currentQuestions.forEach((q, i) => {
-        const status = questionStatus[i];
-        const userAns = userAnswers[i]; // -1 = unanswered
-
-        // Apply filter
-        if (filter === 'correct' && status !== 'correct') return;
-        if (filter === 'incorrect' && status !== 'incorrect') return;
-        if (filter === 'unanswered' && status !== 'unanswered') return;
-
-        const card = document.createElement('div');
-        card.className = `review-q-card review-${status === 'correct' ? 'correct' : status === 'incorrect' ? 'incorrect' : 'unanswered'}`;
-
-        const badge = status === 'correct'
-            ? '<span class="review-q-badge badge-correct">✅ Correct</span>'
-            : status === 'incorrect'
-            ? '<span class="review-q-badge badge-incorrect">❌ Incorrect</span>'
-            : '<span class="review-q-badge badge-unanswered">⏭ Unanswered</span>';
-
-        const timeSpent = questionTimes[i] > 0 ? `${questionTimes[i]}s` : '—';
-
-        let optionsHTML = q.options.map((opt, oi) => {
-            let cls = 'review-option';
-            if (oi === q.correct) cls += ' review-opt-correct';
-            else if (oi === userAns && userAns !== q.correct) cls += ' review-opt-selected-wrong';
-            const label = ['A', 'B', 'C', 'D'][oi];
-            return `<div class="${cls}">${label}. ${opt}</div>`;
-        }).join('');
-
-        card.innerHTML = `
-            <div class="review-q-header">
-                <span class="review-q-num">Question ${i + 1} &nbsp;•&nbsp; ⏱ ${timeSpent}</span>
-                ${badge}
-            </div>
-            <div class="review-q-text">${q.question.replace(/\n/g, '<br>')}</div>
-            <div class="review-options">${optionsHTML}</div>
-            <div class="review-explanation"><strong>💡 Explanation:</strong> ${q.explanation}</div>
-        `;
-
-        container.appendChild(card);
-    });
-
-    if (container.innerHTML === '') {
-        container.innerHTML = `<div style="text-align:center;color:#64748b;padding:2rem;font-size:1.1rem;">No questions in this category.</div>`;
-    }
-}
-
-function filterReview(filter) {
-    buildFullReview(filter);
+    
+    // Build full question review
+    buildFullReview();
 }
 
 function restartQuiz() {
@@ -1499,11 +1165,82 @@ function restartQuiz() {
 }
 
 // ================================================================
+// SKIP & QUIT FUNCTIONS
+// ================================================================
+function skipQuestion() {
+    if (answered) {
+        nextQuestion();
+    } else {
+        questionStatus[currentQIndex] = 'unanswered';
+        userAnswers[currentQIndex] = -1;
+        saveQTime();
+        nextQuestion();
+    }
+}
+
+function quitQuiz() {
+    if (confirm('Are you sure you want to quit? Your progress will be saved.')) {
+        stopTimer();
+        stopQTimer();
+        showResults();
+    }
+}
+
+// ================================================================
+// FULL QUESTION REVIEW
+// ================================================================
+function buildFullReview() {
+    const container = document.getElementById('fullReviewContainer');
+    container.innerHTML = '';
+    
+    currentQuestions.forEach((q, i) => {
+        const status = questionStatus[i];
+        const userAns = userAnswers[i];
+        
+        const card = document.createElement('div');
+        card.className = `review-q-card review-${status}`;
+        card.style.background = '#1e2130';
+        card.style.border = status === 'correct' ? '2px solid #22c55e' : status === 'incorrect' ? '2px solid #ef4444' : '2px solid #f59e0b';
+        card.style.borderRadius = '12px';
+        card.style.padding = '1.5rem';
+        card.style.marginBottom = '1.2rem';
+        
+        const badge = status === 'correct' 
+            ? '<span style="background:#14532d;color:#4ade80;padding:0.3rem 0.8rem;border-radius:999px;font-size:0.8rem;font-weight:700;">✅ Correct</span>'
+            : status === 'incorrect'
+            ? '<span style="background:#7f1d1d;color:#fca5a5;padding:0.3rem 0.8rem;border-radius:999px;font-size:0.8rem;font-weight:700;">❌ Incorrect</span>'
+            : '<span style="background:#292112;color:#fbbf24;padding:0.3rem 0.8rem;border-radius:999px;font-size:0.8rem;font-weight:700;">⏭ Unanswered</span>';
+        
+        let optionsHTML = q.options.map((opt, oi) => {
+            let style = 'background:#151824;border:2px solid #2d3348;color:#cbd5e1;';
+            if (oi === q.correct) style = 'background:#14532d;border:2px solid #22c55e;color:#4ade80;font-weight:600;';
+            if (oi === userAns && userAns !== q.correct) style = 'background:#7f1d1d;border:2px solid #ef4444;color:#fca5a5;';
+            const label = ['A', 'B', 'C', 'D'][oi];
+            return `<div style="padding:0.8rem 1.2rem;border-radius:8px;font-size:0.95rem;margin-bottom:0.6rem;${style}">${label}. ${opt}</div>`;
+        }).join('');
+        
+        card.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                <span style="color:#f1f5f9;font-weight:600;">Question ${i + 1}</span>
+                ${badge}
+            </div>
+            <div style="color:#f1f5f9;font-size:1.05rem;font-weight:500;line-height:1.7;margin-bottom:1.2rem;white-space:pre-line;">${q.question}</div>
+            <div style="margin-bottom:1.2rem;">${optionsHTML}</div>
+            <div style="padding:1rem 1.2rem;background:#292112;border-left:4px solid #f59e0b;border-radius:8px;font-size:0.95rem;color:#fde68a;line-height:1.7;"><strong>💡 Explanation:</strong> ${q.explanation}</div>
+        `;
+        
+        container.appendChild(card);
+    });
+}
+
+// ================================================================
 // BUTTON BINDINGS
 // ================================================================
 document.getElementById('submitBtn').onclick = submitAnswer;
 document.getElementById('nextBtn').onclick = nextQuestion;
 document.getElementById('prevBtn').onclick = prevQuestion;
+document.getElementById('skipBtn').onclick = skipQuestion;
+document.getElementById('quitBtn').onclick = quitQuiz;
 </script>
 </body>
 </html>
